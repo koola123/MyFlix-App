@@ -1,4 +1,4 @@
-# myFlix-client movies app
+# myFlix-client (K-ON movies app)
 
 This is the client-side development for an application called myFlix based on its existing server-side code (REST API and database).
 
