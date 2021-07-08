@@ -43,7 +43,7 @@ This is the client-side development for an application called myFlix based on it
 * Displays favorite movies
 * Allows users to remove a movie from their list of favorites
 
-##### Languages & Tools for building this App:
+##### Languages & Tools used for building this App:
 ```html
    <script> MERN-Stack (MongoDB, ExpressJS, ReactJS, NodeJS) </script>
  ```
