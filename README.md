@@ -50,3 +50,12 @@ This is the client-side development for an application called myFlix based on it
 ```html
    <html> HTML5, CSS3, SCSS </html>
  ```
+ 
+ #### Author
+ 
+ Matthias Müringer
+ 
+ 
+#### Version
+ 
+ 1.0.0
