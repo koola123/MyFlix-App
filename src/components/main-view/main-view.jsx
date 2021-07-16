@@ -19,7 +19,7 @@ export class MainView extends React.Component {
       user: null
     };
   }
-
+  // Code executed right after the component is added to the DOM
   componentDidMount() {
     axios.get('https://my-flix-14618.herokuapp.com/movies')
       .then(response => {
