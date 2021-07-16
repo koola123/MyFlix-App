@@ -1,5 +1,9 @@
 import React from 'react';
+<<<<<<< HEAD
 import PropTypes from 'prop-Types';
+=======
+import PropTypes from 'prop-types';
+>>>>>>> gh-pages
 
 export class MovieView extends React.Component {
 
