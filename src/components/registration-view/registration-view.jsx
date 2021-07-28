@@ -8,7 +8,7 @@ export function RegistrationView(props) {
   const handleSubmit = () => {
     e.preventDefault();
     console.log(username, password);
-    /* Sends a request to the server for authentication */
+    /* Send a request to the server for authentication */
     /* then call props.onLoggedIn(username) */
     // props.onLoggedIn(username);
   };
@@ -21,7 +21,7 @@ export function RegistrationView(props) {
       </label>
       <label>
         Password:
-        <input type="password" value={password} onChange={e => setUsername(e.target.value)} />
+        <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
       </label>
       <button type="submit" onClick={handleSubmit}>Submit</button>
     </form>

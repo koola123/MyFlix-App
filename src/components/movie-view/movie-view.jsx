@@ -1,7 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-Types';
+import PropTypes from 'prop-types';
 
 export class MovieView extends React.Component {
+
 
   render() {
     const { movie, onBackClick } = this.props;
@@ -9,7 +10,7 @@ export class MovieView extends React.Component {
     return (
       <div className="movie-view">
         <div className="movie-poster">
-          <img src={movie.ImagePath} />
+          <img scr={movie.ImagePath} />
         </div>
         <div className="movie-title">
           <span className="label">Title: </span>
