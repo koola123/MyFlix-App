@@ -1,4 +1,4 @@
-# myFlix-client application
+# myFlix-client
 
 This is the client-side development for an application called myFlix based on its existing server-side code (REST API and database).
 
