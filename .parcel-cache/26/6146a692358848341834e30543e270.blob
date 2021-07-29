@@ -1,0 +1,35 @@
+.RegForm {
+  margin: auto;
+  max-width: 250px;
+}
+.LoginForm {
+  margin: auto;
+  max-width: 200px;
+  align-content: center;
+}
+
+.MovieView {
+  text-align: center;
+}
+
+.movie-title {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.movie-poster {
+  padding-bottom: 20px;
+}
+
+.movie-title, .movie-description, .movie-year {
+  padding: 5px;
+}
+
+.my-flix {
+  color: steelblue;
+}
+/*# sourceMappingURL=index.HASH_REF_cd3cecfbeb99e01418fc602055eadc7d.css.map */

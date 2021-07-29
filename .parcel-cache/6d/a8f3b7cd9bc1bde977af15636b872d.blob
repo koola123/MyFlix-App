@@ -1,0 +1,13 @@
+
+.LoginForm {
+  margin: auto;
+  max-width: 200px;
+  align-content: center;
+}
+
+
+
+.my-flix {
+  color: steelblue;
+}
+/*# sourceMappingURL=index.HASH_REF_cd3cecfbeb99e01418fc602055eadc7d.css.map */
