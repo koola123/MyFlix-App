@@ -1,0 +1,4 @@
+#main-nav {
+  font-size: 35px;
+  font-style: bold;
+}

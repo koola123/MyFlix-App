@@ -1,0 +1,21 @@
+.movieview {
+  text-align: center;
+}
+
+.movie-poster {
+  margin-bottom: 20px;
+}
+
+.movie-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.label {
+  font-weight: bold;
+  background-color: darkgoldenrod;
+}
+
+.movie-description {
+  padding: 5px;
+}

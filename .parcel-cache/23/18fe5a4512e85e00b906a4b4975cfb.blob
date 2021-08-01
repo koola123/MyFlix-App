@@ -1,0 +1,4 @@
+Navbar.Brand {
+  font-size: 30px;
+  font-style: bold;
+}

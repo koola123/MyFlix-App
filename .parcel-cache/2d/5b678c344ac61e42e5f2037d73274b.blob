@@ -1,0 +1,5 @@
+.mb-3 {
+  margin: auto;
+  max-width: 50px;
+  align-content: center;
+}

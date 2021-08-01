@@ -1,0 +1,18 @@
+.LoginForm {
+  margin: auto;
+  max-width: 500px;
+  align-content: center;
+  margin-top: 50px;
+  font-size: 25px;
+}
+
+#btn-warning {
+  color: #fff;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.my-flix {
+  color: black;
+}
+/*# sourceMappingURL=index.HASH_REF_8275be51a4fcd452f6c2315f9ab73a83.css.map */

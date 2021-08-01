@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button from 'react-bootstrap/Button';
 
 import './movie-view.scss';
 
@@ -12,7 +13,7 @@ export class MovieView extends React.Component {
     return (
       <div className="movie-view">
         <div className="movie-poster">
-          <img scr={movie.ImagePath} />
+          <img src={movie.ImagePath} />
         </div>
         <div className="movie-title">
           <span className="label">Title: </span>
@@ -22,8 +23,7 @@ export class MovieView extends React.Component {
           <span className="label">Description: </span>
           <span className="value">{movie.Description}</span>
         </div>
-        <button onClick={() => { onBackClick(null); }}>Back</button>
-
+        <Button id="btn-warning" onClick={() => onBackClick(null)} variant="warning">Go Back</Button>
       </div>
     );
   }
@@ -31,10 +31,9 @@ export class MovieView extends React.Component {
 
 MovieView.propTypes = {
   movie: PropTypes.shape({
-    _id: PropTypes.string.isRequired,
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
-    ImagePath: PropTypes.string,
+    ImagePath: PropTypes.string.isRequired,
     Genre: PropTypes.shape({
       Name: PropTypes.string.isRequired,
       Description: PropTypes.string.isRequired
@@ -42,8 +41,8 @@ MovieView.propTypes = {
     Director: PropTypes.shape({
       Name: PropTypes.string.isRequired,
       Bio: PropTypes.string.isRequired,
-      Birth: PropTypes.string
-    }),
-  }),
+      Birth: PropTypes.string.isRequired
+    })
+  }).isRequired,
   onBackClick: PropTypes.func.isRequired
 };

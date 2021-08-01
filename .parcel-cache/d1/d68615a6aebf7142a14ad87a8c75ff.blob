@@ -1,0 +1,5 @@
+.log-form {
+  margin: auto;
+  max-width: 50px;
+  align-content: center;
+}

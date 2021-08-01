@@ -1,0 +1,22 @@
+.movieview {
+  text-align: center;
+}
+
+.movie-poster {
+  width: 400px;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 250%;
+}
+
+.movie-title {
+  font-size: 20px;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.movie-title, .movie-description {
+  padding: 5px;
+}
