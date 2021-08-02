@@ -1,0 +1,6 @@
+#btn-warning {
+  color: #fff;
+  font-size: 20px;
+  font-style: bold;
+  margin-right: 10px;
+}

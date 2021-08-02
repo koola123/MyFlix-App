@@ -5,9 +5,13 @@ import Button from 'react-bootstrap/Button';
 
 import axios from 'axios';
 
+import './registration-view.scss';
+
 export function RegistrationView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [birthday, setBirthday] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,10 +24,11 @@ export function RegistrationView(props) {
     })
       .then(response => {
         const data = response.data;
-        props.onLoggedIn(data);
+        console.log(data);
+        window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
       })
       .catch(e => {
-        console.log('not registered, please try again')
+        console.log('error registering the user')
       });
   };
 
@@ -59,6 +64,7 @@ RegistrationView.propTypes = {
   user: PropTypes.shape({
     Username: PropTypes.string.isRequired,
     Password: PropTypes.string.isRequired,
-    Email: PropTypes.string.isRequired
+    Email: PropTypes.string.isRequired,
+    Birthday: PropTypes.string.isRequired
   }),
 };
