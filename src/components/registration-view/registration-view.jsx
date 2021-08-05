@@ -15,7 +15,6 @@ export function RegistrationView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password);
     axios.post('https://my-flix-48028.herokuapp.com/users', {
       Username: username,
       Password: password,
@@ -62,9 +61,9 @@ export function RegistrationView(props) {
 
 RegistrationView.propTypes = {
   user: PropTypes.shape({
-    Username: PropTypes.string.isRequired,
-    Password: PropTypes.string.isRequired,
-    Email: PropTypes.string.isRequired,
-    Birthday: PropTypes.string.isRequired
+    username: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    birthday: PropTypes.string.isRequired
   }),
 };

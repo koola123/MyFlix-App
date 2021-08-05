@@ -19,9 +19,8 @@ export class DirectorView extends React.Component {
         </div>
         <div className="director-birth">
           <span className="label">Birth: </span>
-          <span className="value">{director.Birth}</span>
+          <span className="value">{movie.Director.Birth}</span>
         </div>
-
         <Button onClick={() => { onBackClick(null); }} variant="warning">Back to Movies</Button>
       </div>
     );

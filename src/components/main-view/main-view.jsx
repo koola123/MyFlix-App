@@ -95,7 +95,7 @@ export class MainView extends React.Component {
 
   render() {
     const { movies, user } = this.state;
-    console.log("render", user);
+    console.log(movies, user);
     return (
       <Router>
         <Container>
@@ -106,6 +106,7 @@ export class MainView extends React.Component {
             </Container>
           </Navbar>
           <Row className="main-view justify-content-md-center">
+
             <Route exact path="/" render={() => {
               if (!user) return <Col>
                 <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
@@ -117,6 +118,7 @@ export class MainView extends React.Component {
                 </Col>
               ))
             }} />
+
             <Route path="/register" render={() => {
               if (user) return <Redirect to="/" />
               return <Col>
@@ -162,7 +164,7 @@ export class MainView extends React.Component {
             }
             } />
 
-            <Route exact path="/users/:username" render={({ history }) => {
+            <Route path="/users/:username" render={({ history }) => {
               if (!user) return <LoginView onLoggedIn={(data) => this.onLoggedIn(data)} />;
               if (movies.length === 0) return <div className="main-view" />;
               return <ProfileView history={history} movies={movies} />

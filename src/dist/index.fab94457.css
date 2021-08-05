@@ -3,6 +3,11 @@
   font-style: bold;
   color: white;
   font-weight: 800;
+  width: 100%;
+}
+
+#btn-logout {
+  font-size: 19px;
 }
 .LoginForm {
   margin: auto;
@@ -46,6 +51,42 @@
 }
 
 
+.first-header {
+  color: 0;
+  font-size: 60px;
+  font-family: Roboto;
+  padding: 20px;
+  text-align: center;
+}
+
+.middle-header {
+  color: green;
+  font-family: Roboto;
+  text-align: center;
+}
+
+.final-header {
+  color: green;
+  font-family: Roboto;
+  text-align: center;
+}
+
+#btn-update {
+  color: #fff;
+  font-size: 16px;
+  margin-right: 10px;
+  font-weight: 600;
+}
+
+#btn-delete-my-account {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+.RegForm {
+  margin: auto;
+  max-width: 250px;
+}
 .my-flix {
   color: black;
 }
