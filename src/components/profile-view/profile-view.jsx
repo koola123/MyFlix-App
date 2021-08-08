@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import { Button, Card, CardDeck, Form, Col, Row } from 'react-bootstrap';
+import { Button, Card, CardDeck, Form, Row } from 'react-bootstrap';
 
 import './profile-view.scss';
 
@@ -40,18 +40,17 @@ export class ProfileView extends React.Component {
           Password: response.data.Password,
           Email: response.data.Email,
           Birthdate: response.data.Birthdate,
-          FavoriteMovies: response.data.FavoriteMovies,
+          FavoriteMovies: response.data.FavoriteMovies
         });
       })
       .catch((error) => {
         console.log(error);
       });
   }
-
+  // remove a movie from favorites movie list
   removeFavoriteMovie() {
     const token = localStorage.getItem("token");
     const username = localStorage.getItem("user");
-
     axios
       .delete(`https://my-flix-48028.herokuapp.com/users/${username}/movies/${movie._id}`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -157,9 +156,9 @@ export class ProfileView extends React.Component {
     return (
       <Row className="profile-view">
         <Card className="profile-card">
-          <h2 className="first-header">Profile overview.</h2>
+          <h2 className="first-header">Profile</h2>
           <Card.Body>
-            {FavoriteMovies.length === 0 && <div className="text-center">Favorite movies list: empty</div>}
+            {FavoriteMovies.length === 0 && <div className="text-center">Favorite movies: empty</div>}
             <div className="favorites-movies ">
               {FavoriteMovies.length > 0 &&
                 movies.map((movie) => {
@@ -181,33 +180,30 @@ export class ProfileView extends React.Component {
                 })}
             </div>
           </Card.Body>
-
-          <h3 className="middle-header">Update Your Profile</h3>
           <Card.Body>
             <Form noValidate validated={validated} className="update-form" onSubmit={(e) => this.handleUpdate(e, this.Name, this.Username, this.Password, this.Email, this.Birthdate)}>
 
               <Form.Group controlId="formBasicUsername">
-                <Form.Label className="form-label">Username</Form.Label>
+                <Form.Label className="form-label">Username: </Form.Label>
                 <Form.Control type="text" placeholder="change username" onChange={(e) => this.setUsername(e.target.value)} />
               </Form.Group>
 
               <Form.Group controlId="formBasicPassword">
                 <Form.Label className="form-label">
-                  Password<span className="required"></span>
+                  Password: <span className="required"></span>
                 </Form.Label>
                 <Form.Control type="password" placeholder="change password" onChange={(e) => this.setPassword(e.target.value)} />
               </Form.Group>
 
               <Form.Group controlId="formBasicEmail">
-                <Form.Label className="form-label">Email</Form.Label>
+                <Form.Label className="form-label">Email: </Form.Label>
                 <Form.Control type="email" placeholder="change email" onChange={(e) => this.setEmail(e.target.value)} />
               </Form.Group>
 
               <Form.Group controlId="formBasicBirthday">
-                <Form.Label className="form-label">Birthdate</Form.Label>
+                <Form.Label className="form-label">Birthdate: </Form.Label>
                 <Form.Control type="date" placeholder="change birthdate" onChange={(e) => this.setBirthdate(e.target.value)} />
               </Form.Group>
-              <h3 className="final-header">Account Deletion</h3>
               <Card.Body>
                 <Button id="btn-update" variant="warning" type="submit">
                   Update
@@ -226,7 +222,7 @@ export class ProfileView extends React.Component {
 }
 
 ProfileView.propTypes = {
-  user: PropTypes.shape({
+  users: PropTypes.shape({
     FavoriteMovies: PropTypes.arrayOf(
       PropTypes.shape({
         _id: PropTypes.string.isRequired,

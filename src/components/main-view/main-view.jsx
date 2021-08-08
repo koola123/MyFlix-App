@@ -14,6 +14,7 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
 
 
@@ -102,6 +103,18 @@ export class MainView extends React.Component {
           <Navbar id="main-nav" bg="warning" sticky="top" variant="dark">
             <Container>
               <Navbar.Brand href="#home">MyFlix!</Navbar.Brand>
+              <Col>
+                <Link to={'/'}>
+                  <Button id="btn-warning" variant="link" type="submit" size="md">
+                    Home
+                  </Button>
+                </Link>
+                <Link to={'/users/username'}>
+                  <Button id="btn-warning" variant="link" type="submit" size="md">
+                    Profile
+                  </Button>
+                </Link>
+              </Col>
               <Button id="btn-logout" onClick={() => { this.onLoggedOut() }} variant="outline-success" size="lg">Logout</Button>
             </Container>
           </Navbar>

@@ -34,25 +34,25 @@ export function RegistrationView(props) {
   return (
     <Form>
       <Form.Group controlId="formUsername">
-        <Form.Label>Username:</Form.Label>
+        <Form.Label>Username </Form.Label>
         <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
       </Form.Group>
 
       <Form.Group controlId="formPassword">
-        <Form.Label>Password:</Form.Label>
+        <Form.Label>Password </Form.Label>
         <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
       </Form.Group>
 
       <Form.Group controlId="formEmail">
-        <Form.Label>Email address:</Form.Label>
+        <Form.Label>Email address </Form.Label>
         <Form.Control placeholder="Enter email" type="email" onChange={e => setEmail(e.target.value)} />
       </Form.Group>
 
       <Form.Group controlId="formBirthdate">
-        <Form.Label>Birthday Date:</Form.Label>
+        <Form.Label>Birthday </Form.Label>
         <Form.Control type="date" onChange={e => setBirthday(e.target.value)} />
       </Form.Group>
-      <Button variant="success" type="submit" onClick={handleSubmit}>
+      <Button id="btn-warning" variant="warning" type="submit" onClick={handleSubmit}>
         Submit
       </Button>
     </Form>

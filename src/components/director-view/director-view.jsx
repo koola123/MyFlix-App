@@ -5,23 +5,21 @@ import './director-view.scss';
 
 export class DirectorView extends React.Component {
   render() {
-    const { movie, onBackClick } = this.props;
+    const { director, onBackClick } = this.props;
 
     return (
       <div className="director-view">
         <div className="director-name">
-          <span className="label">Name: </span>
-          <span className="value">{movie.Director.Name}</span>
+          <span className="value">{director.Name}</span>
         </div>
         <div className="director-bio">
-          <span className="label">Bio: </span>
-          <span className="value">{movie.Director.Bio}</span>
+          <span className="value">{director.Bio}</span>
         </div>
         <div className="director-birth">
-          <span className="label">Birth: </span>
-          <span className="value">{movie.Director.Birth}</span>
+          <span className="label">Born: </span>
+          <span className="value">{director.Birth}</span>
         </div>
-        <Button onClick={() => { onBackClick(null); }} variant="warning">Back to Movies</Button>
+        <Button id="btn-warning" onClick={() => { onBackClick(null); }} variant="warning">Back to Movies</Button>
       </div>
     );
   }
