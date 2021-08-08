@@ -9,34 +9,34 @@ This is the client-side development for an application called myFlix based on it
 
 ## FEATURES AND REQUIREMENTS
 
-### I. Main view
+### Main view
 
 * Returns al list of ALL movies to the user (each listed item with an image, title, and description)
 * Sorting and filtering
 * Ability to select a movie for more details
 
-### II. Single movie view
+### Single movie view
 
 * Returns data (description, genre, director, image) about a single movie to the user
 * Allows users to add a movie to their list of favorites
 
-### III. Login view
+### Login view
 
 * Allows users to log in with a username and password
 * Registration view
 * Allows new users to register (username, password, email, birthday)
 
-### IV. Genre view
+### Genre view
 
 * Returns data about a genre, with a name and description
 * Displays example movies
 
-### V. Director view
+### Director view
 
 * Returns data about a director (name, bio, birt hyear, death year - if appropriate)
 * Displays example movies
 
-### VI. Profile view
+### Profile view
 
 * Allows users to update their user info (username.password.email.date of birth)
 * Allows existing users to deregister
