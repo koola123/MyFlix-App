@@ -45,7 +45,6 @@ export class MovieView extends React.Component {
           <img src={movie.ImagePath} />
         </div>
         <div className="movie-title">
-          <span className="label">Title: </span>
           <span className="value">{movie.Title}</span>
         </div>
         <div className="movie-director">
@@ -68,9 +67,6 @@ export class MovieView extends React.Component {
         </Link>
         <Link to={`/movies/${movie.Title}`}>
           <Button id="btn-warning" variant="warning" onClick={() => this.handleAdd(movie)}>Add to Favorites</Button>
-        </Link>
-        <Link to={`/movies/${movie.Title}`}>
-          <Button id="btn-warning" variant="warning" onClick={() => this.handleRemove(movie)}>Remove from Favorites</Button>
         </Link>
         <Button id="btn-warning" onClick={() => onBackClick(null)} variant="success">Back to Movies</Button>
       </div >

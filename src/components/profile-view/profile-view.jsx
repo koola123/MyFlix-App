@@ -9,7 +9,6 @@ export class ProfileView extends React.Component {
   constructor() {
     super();
     this.state = {
-      Name: null,
       Username: null,
       Password: null,
       Email: null,
@@ -18,16 +17,12 @@ export class ProfileView extends React.Component {
       validated: null,
     };
   }
-
   componentDidMount() {
     const accessToken = localStorage.getItem("token");
     if (accessToken !== null) {
       this.getUser(accessToken);
     }
   }
-
-
-  // get user method
   getUser(token) {
     const username = localStorage.getItem("user");
     axios.get(`https://my-flix-48028.herokuapp.com/users/${username}`, {
@@ -40,14 +35,14 @@ export class ProfileView extends React.Component {
           Password: response.data.Password,
           Email: response.data.Email,
           Birthdate: response.data.Birthdate,
-          FavoriteMovies: response.data.FavoriteMovies
+          FavoriteMovies: response.data.FavoriteMovies,
         });
       })
       .catch((error) => {
         console.log(error);
       });
   }
-  // remove a movie from favorites movie list
+  // Remove a favorite movie from the users movie list
   removeFavoriteMovie() {
     const token = localStorage.getItem("token");
     const username = localStorage.getItem("user");
@@ -62,7 +57,7 @@ export class ProfileView extends React.Component {
       .catch((error) => {
         console.log(error);
       })
-    // .then(() => window.location.reload());
+      .then(() => window.location.reload());
   }
 
   handleUpdate(e, newName, newUsername, newPassword, newEmail, newBirthdate) {
@@ -113,23 +108,18 @@ export class ProfileView extends React.Component {
   setName(input) {
     this.Name = input;
   }
-
   setUsername(input) {
     this.Username = input;
   }
-
   setPassword(input) {
     this.Password = input;
   }
-
   setEmail(input) {
     this.Email = input;
   }
-
   setBirthdate(input) {
     this.Birthdate = input;
   }
-
   handleDeleteUser = (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
@@ -185,24 +175,24 @@ export class ProfileView extends React.Component {
 
               <Form.Group controlId="formBasicUsername">
                 <Form.Label className="form-label">Username: </Form.Label>
-                <Form.Control type="text" placeholder="change username" onChange={(e) => this.setUsername(e.target.value)} />
+                <Form.Control type="text" onChange={(e) => this.setUsername(e.target.value)} />
               </Form.Group>
 
               <Form.Group controlId="formBasicPassword">
                 <Form.Label className="form-label">
                   Password: <span className="required"></span>
                 </Form.Label>
-                <Form.Control type="password" placeholder="change password" onChange={(e) => this.setPassword(e.target.value)} />
+                <Form.Control type="password" onChange={(e) => this.setPassword(e.target.value)} />
               </Form.Group>
 
               <Form.Group controlId="formBasicEmail">
                 <Form.Label className="form-label">Email: </Form.Label>
-                <Form.Control type="email" placeholder="change email" onChange={(e) => this.setEmail(e.target.value)} />
+                <Form.Control type="email" onChange={(e) => this.setEmail(e.target.value)} />
               </Form.Group>
 
               <Form.Group controlId="formBasicBirthday">
                 <Form.Label className="form-label">Birthdate: </Form.Label>
-                <Form.Control type="date" placeholder="change birthdate" onChange={(e) => this.setBirthdate(e.target.value)} />
+                <Form.Control type="date" onChange={(e) => this.setBirthdate(e.target.value)} />
               </Form.Group>
               <Card.Body>
                 <Button id="btn-update" variant="warning" type="submit">
