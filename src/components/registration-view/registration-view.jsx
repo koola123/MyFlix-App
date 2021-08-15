@@ -67,3 +67,5 @@ RegistrationView.propTypes = {
     birthday: PropTypes.string.isRequired
   }),
 };
+
+
