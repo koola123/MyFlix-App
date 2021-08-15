@@ -2,42 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
-
 import { Link } from 'react-router-dom';
-
 import './movie-view.scss';
 
 
 export class MovieView extends React.Component {
 
-  handleAdd() {
+  addFavorite() {
     const token = localStorage.getItem('token');
-    const user = localStorage.getItem('user');
-    axios.post('https://my-flix-48028.herokuapp.com/users/addtofavs/${user}/' +
-      this.props.movie._id, {},
-      { headers: { Authorization: `Bearer ${token}` } }
-    )
-      .then((response) => {
-        console.log(response);
-      });
-  }
+    const username = localStorage.getItem('user');
 
-  handleRemove() {
-    const token = localStorage.getItem('token');
-    const user = localStorage.getItem('user');
-    axios.post('https://my-flix-48028.herokuapp.com/users/removefromfavs/${user}/' +
-      this.props.movie._id, {},
-      { headers: { Authorization: `Bearer ${token}` } }
-    )
-      .then((response) => {
-        console.log(response);
+    axios.post('https://my-flix-48028.herokuapp.com/users/${username}/movies/${this.props.movie._id}', {}, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(function (response) {
+        alert('Added to Favorites List')
+      })
+      .catch(function (error) {
+        console.log(error);
       });
-  }
+  };
 
   render() {
     const { movie, onBackClick } = this.props;
-
-    if (!movie) return null;
 
     return (
       <div className="movie-view">
@@ -45,7 +32,6 @@ export class MovieView extends React.Component {
           <img src={movie.ImagePath} />
         </div>
         <div className="movie-title">
-          <span className="label">Title: </span>
           <span className="value">{movie.Title}</span>
         </div>
         <div className="movie-director">
@@ -67,16 +53,16 @@ export class MovieView extends React.Component {
           <Button id="btn-warning" variant="warning">Genre</Button>
         </Link>
         <Link to={`/movies/${movie.Title}`}>
-          <Button id="btn-warning" variant="warning" onClick={() => this.handleAdd(movie)}>Add to Favorites</Button>
-        </Link>
-        <Link to={`/movies/${movie.Title}`}>
-          <Button id="btn-warning" variant="warning" onClick={() => this.handleRemove(movie)}>Remove from Favorites</Button>
+          <Button id="btn-warning" variant="warning" value={movie._id} onClick={(e) => this.addFavorite(e, movie)}>
+            Add to Favorites
+          </Button>
         </Link>
         <Button id="btn-warning" onClick={() => onBackClick(null)} variant="success">Back to Movies</Button>
       </div >
     );
   }
 }
+
 
 MovieView.propTypes = {
   movie: PropTypes.shape({

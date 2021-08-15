@@ -97,6 +97,7 @@ export class MainView extends React.Component {
   render() {
     const { movies, user } = this.state;
     console.log(movies, user);
+
     return (
       <Router>
         <Container>
@@ -104,13 +105,13 @@ export class MainView extends React.Component {
             <Container>
               <Navbar.Brand href="#home">MyFlix!</Navbar.Brand>
               <Col>
-                <Link to={'/'}>
-                  <Button id="btn-warning" variant="link" type="submit" size="md">
+                <Link to={"/"}>
+                  <Button id="btn-yellow" variant="link" type="submit" size="md">
                     Home
                   </Button>
                 </Link>
-                <Link to={'/users/username'}>
-                  <Button id="btn-warning" variant="link" type="submit" size="md">
+                <Link to={"/profile"}>
+                  <Button id="btn-yellow" variant="link" type="submit" size="md">
                     Profile
                   </Button>
                 </Link>
@@ -118,8 +119,9 @@ export class MainView extends React.Component {
               <Button id="btn-logout" onClick={() => { this.onLoggedOut() }} variant="outline-success" size="lg">Logout</Button>
             </Container>
           </Navbar>
-          <Row className="main-view justify-content-md-center">
 
+
+          <Row className="main-view justify-content-md-center">
             <Route exact path="/" render={() => {
               if (!user) return <Col>
                 <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
@@ -140,7 +142,7 @@ export class MainView extends React.Component {
             }} />
 
             <Route path="/profile" render={() => {
-              if (!user) return <Col>
+              if (user) return <Col>
                 <ProfileView />
               </Col>
             }} />
@@ -150,7 +152,7 @@ export class MainView extends React.Component {
                 <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
               </Col>
               if (movies.length === 0) return <div className="main-view" />;
-              return <Col md={8}>
+              return <Col md={12}>
                 <MovieView movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()} />
               </Col>
             }} />
@@ -160,7 +162,7 @@ export class MainView extends React.Component {
                 <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
               </Col>
               if (movies.length === 0) return <div className="main-view" />;
-              return <Col md={8}>
+              return <Col md={12}>
                 <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} onBackClick={() => history.goBack()} />
               </Col>
             }
@@ -171,7 +173,7 @@ export class MainView extends React.Component {
                 <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
               </Col>
               if (movies.length === 0) return <div className="main-view" />;
-              return <Col md={8}>
+              return <Col md={12}>
                 <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} onBackClick={() => history.goBack()} />
               </Col>
             }
