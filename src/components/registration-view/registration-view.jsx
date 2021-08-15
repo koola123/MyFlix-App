@@ -5,13 +5,16 @@ import Button from 'react-bootstrap/Button';
 
 import axios from 'axios';
 
+import './registration-view.scss';
+
 export function RegistrationView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [birthday, setBirthday] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password);
     axios.post('https://my-flix-48028.herokuapp.com/users', {
       Username: username,
       Password: password,
@@ -20,35 +23,36 @@ export function RegistrationView(props) {
     })
       .then(response => {
         const data = response.data;
-        props.onLoggedIn(data);
+        console.log(data);
+        window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
       })
       .catch(e => {
-        console.log('not registered, please try again')
+        console.log('error registering the user')
       });
   };
 
   return (
     <Form>
       <Form.Group controlId="formUsername">
-        <Form.Label>Username:</Form.Label>
+        <Form.Label>Username </Form.Label>
         <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
       </Form.Group>
 
       <Form.Group controlId="formPassword">
-        <Form.Label>Password:</Form.Label>
+        <Form.Label>Password </Form.Label>
         <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
       </Form.Group>
 
       <Form.Group controlId="formEmail">
-        <Form.Label>Email address:</Form.Label>
+        <Form.Label>Email address </Form.Label>
         <Form.Control placeholder="Enter email" type="email" onChange={e => setEmail(e.target.value)} />
       </Form.Group>
 
       <Form.Group controlId="formBirthdate">
-        <Form.Label>Birthday Date:</Form.Label>
+        <Form.Label>Birthday </Form.Label>
         <Form.Control type="date" onChange={e => setBirthday(e.target.value)} />
       </Form.Group>
-      <Button variant="success" type="submit" onClick={handleSubmit}>
+      <Button id="btn-warning" variant="warning" type="submit" onClick={handleSubmit}>
         Submit
       </Button>
     </Form>
@@ -57,8 +61,9 @@ export function RegistrationView(props) {
 
 RegistrationView.propTypes = {
   user: PropTypes.shape({
-    Username: PropTypes.string.isRequired,
-    Password: PropTypes.string.isRequired,
-    Email: PropTypes.string.isRequired
+    username: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    birthday: PropTypes.string.isRequired
   }),
 };

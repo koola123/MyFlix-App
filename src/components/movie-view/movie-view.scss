@@ -1,5 +1,5 @@
-.movieview {
-  text-align: center;
+.movie-view {
+  margin-bottom: 100px;
 }
 
 .movie-poster {
@@ -7,13 +7,23 @@ margin-bottom: 25px;
 }
 
 .movie-title {
-  font-size: 25px;
+  font-size: 35px;
   font-weight: bold;
 }
 
+.movie-director .value {
+  font-size: 20px;
+}
+
 .movie-description {
-  padding: 10px;
   margin-left: 0;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.movie-genre {
+  margin-bottom: 40px;
+  font-size: 20px;
 }
 
 .label {

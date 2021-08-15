@@ -1,0 +1,143 @@
+#main-nav {
+  font-style: bold;
+  color: white;
+  font-weight: 800;
+  width: 100%;
+}
+
+#btn-logout {
+  font-size: 19px;
+}
+.LoginForm {
+  margin: auto;
+  max-width: 500px;
+  align-content: center;
+  margin-top: 50px;
+  font-size: 25px;
+}
+
+#btn-warning {
+  color: #fff;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+#btn-btn-warning {
+  color: #fff;
+  font-size: 18px;
+  margin-right: 10px;
+}
+#btn-warning {
+  color: #fff;
+  font-size: 18px;
+  font-style: bold;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+.movie-poster {
+  margin-bottom: 25px;
+}
+
+.movie-title {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.movie-director .value {
+  font-size: 20px;
+}
+
+.movie-description {
+  margin-left: 0;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.movie-genre {
+  margin-bottom: 40px;
+  font-size: 20px;
+}
+
+.label {
+  font-size: 20px;
+}
+.director-name {
+  font-size: 35px;
+  font-family: Roboto;
+  font-weight: 700;
+  margin-top: 30px;
+}
+
+.director-description {
+  font-size: 20px;
+}
+
+.director-bio {
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 23px;
+}
+
+.director-birth {
+  margin-bottom: 10px;
+}
+
+.director-birth .value {
+  font-size: 15px;
+}
+
+.director-birth .label {
+  font-size: 20px;
+}
+.genre-name {
+  font-size: 35px;
+  font-family: Roboto;
+  font-weight: 700;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.genre-description {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.first-header {
+  color: 0;
+  font-size: 60px;
+  font-family: Roboto;
+  padding: 20px;
+  text-align: center;
+}
+
+.middle-header {
+  color: green;
+  font-family: Roboto;
+  text-align: center;
+}
+
+.final-header {
+  color: green;
+  font-family: Roboto;
+  text-align: center;
+}
+
+#btn-update {
+  color: #fff;
+  font-size: 16px;
+  margin-right: 10px;
+  font-weight: 600;
+}
+
+#btn-delete-my-account {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+.RegForm {
+  margin: auto;
+  max-width: 250px;
+}
+.my-flix {
+  color: black;
+}
+/*# sourceMappingURL=index.fab94457.css.map */

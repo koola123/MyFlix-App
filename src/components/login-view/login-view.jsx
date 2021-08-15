@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
 import './login-view.scss';
 
@@ -30,20 +31,22 @@ export function LoginView(props) {
   return (
     <Form className="LoginForm">
       <Form.Group controlId="formUsername">
-        <Form.Label>Username:</Form.Label>
+        <Form.Label>Username</Form.Label>
         <Form.Control placeholder="Enter username" type="text" onChange={e => setUsername(e.target.value)} />
       </Form.Group>
 
       <Form.Group controlId="formPassword">
-        <Form.Label>Password:</Form.Label>
-        <Form.Control placeholder="Password" type="password" onChange={e => setPassword(e.target.value)} />
+        <Form.Label>Password</Form.Label>
+        <Form.Control placeholder="Password" type="Password" onChange={e => setPassword(e.target.value)} />
       </Form.Group>
       <Button id="btn-warning" variant="warning" type="submit" size="md" onClick={handleSubmit}>
         Log in
       </Button>
-      <Button id="btn-warning" variant="warning" type="submit" size="md" onClick={handleSubmit}>
-        Signup!
-      </Button>
+      <Link to={'/register'}>
+        <Button id="btn-btn-warning" variant="warning" type="submit" size="md">
+          Signup!
+        </Button>
+      </Link>
     </Form >
   );
 }
