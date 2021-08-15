@@ -1,3 +1,5 @@
+// main-view
+
 import React from 'react';
 import axios from 'axios';
 import './main-view.scss';
@@ -97,6 +99,7 @@ export class MainView extends React.Component {
   render() {
     const { movies, user } = this.state;
     console.log(movies, user);
+
     return (
       <Router>
         <Container>
@@ -104,13 +107,13 @@ export class MainView extends React.Component {
             <Container>
               <Navbar.Brand href="#home">MyFlix!</Navbar.Brand>
               <Col>
-                <Link to={'/'}>
-                  <Button id="btn-warning" variant="link" type="submit" size="md">
+                <Link to={"/"}>
+                  <Button id="btn-yellow" variant="link" type="submit" size="md">
                     Home
                   </Button>
                 </Link>
-                <Link to={'/users/profile'}>
-                  <Button id="btn-warning" variant="link" type="submit" size="md">
+                <Link to={"/profile"}>
+                  <Button id="btn-yellow" variant="link" type="submit" size="md">
                     Profile
                   </Button>
                 </Link>
@@ -141,7 +144,7 @@ export class MainView extends React.Component {
             }} />
 
             <Route path="/profile" render={() => {
-              if (!user) return <Col>
+              if (user) return <Col>
                 <ProfileView />
               </Col>
             }} />

@@ -51,13 +51,13 @@ export class ProfileView extends React.Component {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => {
-        alert("The movie was removed");
+        alert("The movie has been removed");
         this.componentDidMount();
       })
       .catch((error) => {
         console.log(error);
       })
-      .then(() => window.location.reload());
+    // .then(() => window.location.reload());
   }
 
   handleUpdate(e, newName, newUsername, newPassword, newEmail, newBirthdate) {
@@ -159,7 +159,7 @@ export class ProfileView extends React.Component {
                           <Card.Img style={{ width: '18rem' }} className="movieCard" variant="top" src={movie.ImageURL} />
                           <Card.Body>
                             <Card.Title className="movie-card-title">{movie.Title}</Card.Title>
-                            <Button size="sm" className="profile-button remove-favorite" variant="warning" value={movie._id} onClick={(e) => this.removeFavouriteMovie(e, movie)}>
+                            <Button size="md" className="profile-button remove-favorite" variant="warning" value={movie._id} onClick={(e) => this.removeFavoriteMovie(e, movie)}>
                               Remove
                             </Button>
                           </Card.Body>
@@ -196,7 +196,7 @@ export class ProfileView extends React.Component {
               </Form.Group>
               <Card.Body>
                 <Button id="btn-update" variant="warning" type="submit">
-                  Update
+                  Update Profile
                 </Button>
                 <Button id="btn-delete-my-account" variant="warning" onClick={(e) => this.handleDeleteUser(e)}>
                   Delete Account
