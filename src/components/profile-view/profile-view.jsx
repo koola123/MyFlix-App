@@ -151,19 +151,20 @@ export class ProfileView extends React.Component {
         <Card className="profile-card">
           <h2 className="first-header">Welcome to your Profile!</h2>
           <Card.Body>
-            <h1 className="favorite-movies-header">Favorite Movies</h1>
-            {FavoriteMovies.length === 0 && <div className="text-center">Favorite movies: empty</div>}
+            <h1 className="favorite-movies-header">Favorite Movies:</h1>
+            {FavoriteMovies.length === 0 && <div className="text-center">*** The List is currently empty ***</div>}
             <div className="favorites-movies ">
               {FavoriteMovies.length > 0 &&
                 FavoriteMovies.map((movieId) => {
                   const movie = movies.find((favMovie) => favMovie._id === movieId)
+
                   return (
                     <CardDeck className="movie-card-deck">
                       <Card className="favorites-item card-content" style={{ width: '16rem' }} key={movie._id}>
-                        <Card.Img style={{ width: '18rem' }} className="movieCard" variant="top" src={movie.ImagePath} />
+                        <Card.Img style={{ width: '38rem' }} className="movieCard" variant="top" src={movie.ImagePath} />
                         <Card.Body>
                           <Card.Title className="movie-card-title">{movie.Title}</Card.Title>
-                          <Button variant="warning" size="md" value={movie._id} onClick={(e) => this.removeFavoriteMovie(e, movie)}>
+                          <Button variant="warning" size="lg" value={movie._id} onClick={(e) => this.removeFavoriteMovie(e, movie)}>
                             Remove
                           </Button>
                         </Card.Body>
@@ -177,7 +178,7 @@ export class ProfileView extends React.Component {
             <Form noValidate validated={validated} className="update-form" onSubmit={(e) => this.handleUpdate(e, this.Name, this.Username, this.Password, this.Email, this.Birthdate)}>
 
               <Form.Group controlId="Username">
-                <h2 className="profile-change">Update Profile Information</h2>
+                <h2 className="profile-change">Update Profile Information:</h2>
                 <Form.Label className="form-label">Username: </Form.Label>
                 <Form.Control type="text" placeholder="Enter username" onChange={(e) => this.setUsername(e.target.value)} />
               </Form.Group>

@@ -122,7 +122,6 @@ export class MainView extends React.Component {
             </Container>
           </Navbar>
 
-
           <Row className="main-view justify-content-md-center">
             <Route exact path="/" render={() => {
               if (!user) return <Col>
@@ -188,7 +187,7 @@ export class MainView extends React.Component {
             }} />
           </Row>
         </Container>
-      </Router>
+      </Router >
     );
   }
 }
