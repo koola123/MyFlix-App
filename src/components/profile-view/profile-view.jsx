@@ -42,12 +42,12 @@ export class ProfileView extends React.Component {
         console.log(error);
       });
   }
-  // Remove a favorite movie from the users movie list
-  removeFavoriteMovie() {
+  // Remove a movie from the users profile
+  removeFavoriteMovie(e, movie) {
     const token = localStorage.getItem("token");
     const username = localStorage.getItem("user");
     axios
-      .delete(`https://my-flix-48028.herokuapp.com/users/${username}/movies/${movie._id}`, {
+      .delete(`https://my-flix-48028.herokuapp.com/users/${username}/${movie._id}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => {
@@ -79,6 +79,7 @@ export class ProfileView extends React.Component {
     const token = localStorage.getItem("token");
     const username = localStorage.getItem("user");
 
+    // Update user profile information
     axios.put(`https://my-flix-48028.herokuapp.com/users/${username}`, {
       headers: { Authorization: `Bearer ${token}` },
       data: {
@@ -125,6 +126,8 @@ export class ProfileView extends React.Component {
     const token = localStorage.getItem("token");
     const username = localStorage.getItem("user");
 
+
+    // Delete user profile
     axios.delete(`https://my-flix-48028.herokuapp.com/users/${username}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
@@ -151,54 +154,53 @@ export class ProfileView extends React.Component {
             {FavoriteMovies.length === 0 && <div className="text-center">Favorite movies: empty</div>}
             <div className="favorites-movies ">
               {FavoriteMovies.length > 0 &&
-                movies.map((movie) => {
-                  if (movie._id === FavoriteMovies.find((favMovie) => favMovie === movie._id)) {
-                    return (
-                      <CardDeck className="movie-card-deck">
-                        <Card className="favorites-item card-content" style={{ width: '16rem' }} key={movie._id}>
-                          <Card.Img style={{ width: '18rem' }} className="movieCard" variant="top" src={movie.ImageURL} />
-                          <Card.Body>
-                            <Card.Title className="movie-card-title">{movie.Title}</Card.Title>
-                            <Button size="md" className="profile-button remove-favorite" variant="warning" value={movie._id} onClick={(e) => this.removeFavoriteMovie(e, movie)}>
-                              Remove
-                            </Button>
-                          </Card.Body>
-                        </Card>
-                      </CardDeck>
-                    );
-                  }
+                FavoriteMovies.map((movieId) => {
+                  const movie = movies.find((favMovie) => favMovie._id === movieId)
+                  return (
+                    <CardDeck className="movie-card-deck">
+                      <Card className="favorites-item card-content" style={{ width: '16rem' }} key={movie._id}>
+                        <Card.Img style={{ width: '18rem' }} className="movieCard" variant="top" src={movie.ImagePath} />
+                        <Card.Body>
+                          <Card.Title className="movie-card-title">{movie.Title}</Card.Title>
+                          <Button variant="warning" size="md" value={movie._id} onClick={(e) => this.removeFavoriteMovie(e, movie)}>
+                            Remove
+                          </Button>
+                        </Card.Body>
+                      </Card>
+                    </CardDeck>
+                  );
                 })}
             </div>
           </Card.Body>
           <Card.Body>
             <Form noValidate validated={validated} className="update-form" onSubmit={(e) => this.handleUpdate(e, this.Name, this.Username, this.Password, this.Email, this.Birthdate)}>
 
-              <Form.Group controlId="formBasicUsername">
+              <Form.Group controlId="Username">
                 <Form.Label className="form-label">Username: </Form.Label>
-                <Form.Control type="text" onChange={(e) => this.setUsername(e.target.value)} />
+                <Form.Control type="text" placeholder="Enter username" onChange={(e) => this.setUsername(e.target.value)} />
               </Form.Group>
 
-              <Form.Group controlId="formBasicPassword">
+              <Form.Group controlId="Password">
                 <Form.Label className="form-label">
                   Password: <span className="required"></span>
                 </Form.Label>
-                <Form.Control type="password" onChange={(e) => this.setPassword(e.target.value)} />
+                <Form.Control type="password" placeholder="Password" onChange={(e) => this.setPassword(e.target.value)} />
               </Form.Group>
 
-              <Form.Group controlId="formBasicEmail">
+              <Form.Group controlId="Email">
                 <Form.Label className="form-label">Email: </Form.Label>
-                <Form.Control type="email" onChange={(e) => this.setEmail(e.target.value)} />
+                <Form.Control type="email" placeholder="Email" onChange={(e) => this.setEmail(e.target.value)} />
               </Form.Group>
 
-              <Form.Group controlId="formBasicBirthday">
+              <Form.Group controlId="Birthday">
                 <Form.Label className="form-label">Birthdate: </Form.Label>
                 <Form.Control type="date" onChange={(e) => this.setBirthdate(e.target.value)} />
               </Form.Group>
               <Card.Body>
-                <Button id="btn-update" variant="warning" type="submit">
+                <Button id="btn-update-my-account" variant="warning">
                   Update Profile
                 </Button>
-                <Button id="btn-delete-my-account" variant="warning" onClick={(e) => this.handleDeleteUser(e)}>
+                <Button id="btn-delete-my-account" variant="warning" type="submit" onClick={(e) => this.handleDeleteUser(e)}>
                   Delete Account
                 </Button>
               </Card.Body>

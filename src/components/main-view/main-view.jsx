@@ -105,7 +105,7 @@ export class MainView extends React.Component {
         <Container>
           <Navbar id="main-nav" bg="warning" sticky="top" variant="dark">
             <Container>
-              <Navbar.Brand href="#home">MyFlix!</Navbar.Brand>
+              <Navbar.Brand>MyFlix!</Navbar.Brand>
               <Col>
                 <Link to={"/"}>
                   <Button id="btn-yellow" variant="link" type="submit" size="md">
@@ -145,7 +145,7 @@ export class MainView extends React.Component {
 
             <Route path="/profile" render={() => {
               if (user) return <Col>
-                <ProfileView />
+                <ProfileView movies={movies} />
               </Col>
             }} />
 
