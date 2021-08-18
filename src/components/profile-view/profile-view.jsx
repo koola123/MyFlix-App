@@ -149,8 +149,9 @@ export class ProfileView extends React.Component {
     return (
       <Row className="profile-view">
         <Card className="profile-card">
-          <h2 className="first-header">Profile</h2>
+          <h2 className="first-header">Welcome to your Profile!</h2>
           <Card.Body>
+            <h1 className="favorite-movies-header">Favorite Movies</h1>
             {FavoriteMovies.length === 0 && <div className="text-center">Favorite movies: empty</div>}
             <div className="favorites-movies ">
               {FavoriteMovies.length > 0 &&
@@ -176,6 +177,7 @@ export class ProfileView extends React.Component {
             <Form noValidate validated={validated} className="update-form" onSubmit={(e) => this.handleUpdate(e, this.Name, this.Username, this.Password, this.Email, this.Birthdate)}>
 
               <Form.Group controlId="Username">
+                <h2 className="profile-change">Update Profile Information</h2>
                 <Form.Label className="form-label">Username: </Form.Label>
                 <Form.Control type="text" placeholder="Enter username" onChange={(e) => this.setUsername(e.target.value)} />
               </Form.Group>
