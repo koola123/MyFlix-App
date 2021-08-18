@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import { Button, Card, CardDeck, Form, Row } from 'react-bootstrap';
+import { Button, Card, CardDeck, Form, Row, Col } from 'react-bootstrap';
 
 import './profile-view.scss';
 
@@ -147,7 +147,7 @@ export class ProfileView extends React.Component {
     const { movies } = this.props;
 
     return (
-      <Row className="profile-view">
+      <Row className="profile-view justify-content-md-center">
         <Card className="profile-card">
           <h2 className="first-header">Welcome to your Profile!</h2>
           <Card.Body>
@@ -158,14 +158,15 @@ export class ProfileView extends React.Component {
                 FavoriteMovies.map((movieId) => {
                   const movie = movies.find((favMovie) => favMovie._id === movieId)
 
+
                   return (
-                    <CardDeck className="movie-card-deck">
-                      <Card className="favorites-item card-content" style={{ width: '16rem' }} key={movie._id}>
-                        <Card.Img style={{ width: '38rem' }} className="movieCard" variant="top" src={movie.ImagePath} />
+                    <CardDeck>
+                      <Card style={{ width: '10rem' }} key={movie._id}>
+                        <Card.Img style={{ width: '10rem' }} className="movieCard" variant="top" src={movie.ImagePath} />
                         <Card.Body>
                           <Card.Title className="movie-card-title">{movie.Title}</Card.Title>
-                          <Button variant="warning" size="lg" value={movie._id} onClick={(e) => this.removeFavoriteMovie(e, movie)}>
-                            Remove
+                          <Button variant="danger" size="md" value={movie._id} onClick={(e) => this.removeFavoriteMovie(e, movie)}>
+                            Unpin!
                           </Button>
                         </Card.Body>
                       </Card>
