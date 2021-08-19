@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import { Button, Card, CardDeck, Form, Row, Col } from 'react-bootstrap';
+import { Button, Card, CardDeck, Form, Row } from 'react-bootstrap';
 
 import './profile-view.scss';
 
@@ -60,7 +60,7 @@ export class ProfileView extends React.Component {
     // .then(() => window.location.reload());
   }
 
-  handleUpdate(e, newName, newUsername, newPassword, newEmail, newBirthdate) {
+  handleUpdate(e, newUsername, newPassword, newEmail, newBirthday) {
     this.setState({
       validated: null,
     });
@@ -83,21 +83,19 @@ export class ProfileView extends React.Component {
     axios.put(`https://my-flix-48028.herokuapp.com/users/${username}`, {
       headers: { Authorization: `Bearer ${token}` },
       data: {
-        Name: newName ? newName : this.state.Name,
         Username: newUsername ? newUsername : this.state.Username,
         Password: newPassword ? newPassword : this.state.Password,
         Email: newEmail ? newEmail : this.state.Email,
-        Birthdate: newBirthdate ? newBirthdate : this.state.Birthdate,
+        Birthday: newBirthday ? newBirthday : this.state.Birthday,
       },
     })
       .then((response) => {
-        alert("Saved changes");
+        alert("Saved new changes");
         this.setState({
-          Name: response.data.Name,
           Username: response.data.Username,
           Password: response.data.Password,
           Email: response.data.Email,
-          Birthdate: response.data.Birthdate,
+          Birthday: response.data.Birthday,
         });
         localStorage.setItem("user", this.state.Username);
         window.open(`/users/${username}`, "_self");
@@ -105,9 +103,6 @@ export class ProfileView extends React.Component {
       .catch((error) => {
         console.log(error);
       });
-  }
-  setName(input) {
-    this.Name = input;
   }
   setUsername(input) {
     this.Username = input;
@@ -118,9 +113,10 @@ export class ProfileView extends React.Component {
   setEmail(input) {
     this.Email = input;
   }
-  setBirthdate(input) {
-    this.Birthdate = input;
+  setBirthday(input) {
+    this.Birthday = input;
   }
+
   handleDeleteUser = (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
@@ -176,7 +172,7 @@ export class ProfileView extends React.Component {
             </div>
           </Card.Body>
           <Card.Body>
-            <Form noValidate validated={validated} className="update-form" onSubmit={(e) => this.handleUpdate(e, this.Name, this.Username, this.Password, this.Email, this.Birthdate)}>
+            <Form noValidate validated={validated} className="update-form" onSubmit={(e) => this.handleUpdate(e, this.Name, this.Username, this.Password, this.Email, this.Birthday)}>
 
               <Form.Group controlId="Username">
                 <h2 className="profile-change">Update Profile Information:</h2>
@@ -197,8 +193,8 @@ export class ProfileView extends React.Component {
               </Form.Group>
 
               <Form.Group controlId="Birthday">
-                <Form.Label className="form-label">Birthdate: </Form.Label>
-                <Form.Control type="date" onChange={(e) => this.setBirthdate(e.target.value)} />
+                <Form.Label className="form-label">Birthday: </Form.Label>
+                <Form.Control type="date" onChange={(e) => this.setBirthday(e.target.value)} />
               </Form.Group>
               <Card.Body>
                 <Button id="btn-update-my-account" variant="warning">
@@ -227,6 +223,6 @@ ProfileView.propTypes = {
     ),
     Username: PropTypes.string.isRequired,
     Email: PropTypes.string.isRequired,
-    Birthdate: PropTypes.string,
+    Birthday: PropTypes.string,
   }),
 };
