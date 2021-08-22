@@ -1,6 +1,0 @@
-#main-nav {
-  font-size: 35px;
-  font-style: bold;
-  color: red;
-  font-weight: 800;
-}
