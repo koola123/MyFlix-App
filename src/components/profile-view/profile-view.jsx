@@ -79,7 +79,7 @@ export class ProfileView extends React.Component {
     const token = localStorage.getItem("token");
     const username = localStorage.getItem("user");
 
-    // Update user profile information
+    // Update information user profile
     axios.put(`https://my-flix-48028.herokuapp.com/users/${username}`, {
       headers: { Authorization: `Bearer ${token}` },
       data: {
@@ -105,16 +105,16 @@ export class ProfileView extends React.Component {
       });
   }
   setUsername(input) {
-    this.Username = input;
+    this.setState({ Username: input })
   }
   setPassword(input) {
-    this.Password = input;
+    this.setState({ Password: input })
   }
   setEmail(input) {
-    this.Email = input;
+    this.setState({ Email: input })
   }
   setBirthday(input) {
-    this.Birthday = input;
+    this.setState({ Birthday: input })
   }
 
   handleDeleteUser = (e) => {
@@ -197,10 +197,10 @@ export class ProfileView extends React.Component {
                 <Form.Control type="date" onChange={(e) => this.setBirthday(e.target.value)} />
               </Form.Group>
               <Card.Body>
-                <Button id="btn-update-my-account" variant="warning">
+                <Button id="btn-update-my-account" variant="warning" type="submit">
                   Update Profile
                 </Button>
-                <Button id="btn-delete-my-account" variant="warning" type="submit" onClick={(e) => this.handleDeleteUser(e)}>
+                <Button id="btn-delete-my-account" variant="warning" onClick={(e) => this.handleDeleteUser(e)}>
                   Delete Account
                 </Button>
               </Card.Body>

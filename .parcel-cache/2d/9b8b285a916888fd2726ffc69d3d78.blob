@@ -1,5 +1,0 @@
-.LoginForm {
-  margin: auto;
-  max-width: 500px;
-  align-content: left;
-}

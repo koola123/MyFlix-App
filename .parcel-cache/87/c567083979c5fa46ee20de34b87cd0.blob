@@ -1,4 +1,0 @@
-Navbar.Brand #page-name {
-  font-size: 100px;
-  font-style: bold;
-}
