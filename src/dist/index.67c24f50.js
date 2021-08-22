@@ -29146,16 +29146,24 @@ class ProfileView extends _reactDefault.default.Component {
         });
     }
     setUsername(input) {
-        this.Username = input;
+        this.setState({
+            Username: input
+        });
     }
     setPassword(input) {
-        this.Password = input;
+        this.setState({
+            Password: input
+        });
     }
     setEmail(input) {
-        this.Email = input;
+        this.setState({
+            Email: input
+        });
     }
     setBirthday(input) {
-        this.Birthday = input;
+        this.setState({
+            Birthday: input
+        });
     }
     handleDeleteUser = (e)=>{
         e.preventDefault();
@@ -29417,6 +29425,7 @@ class ProfileView extends _reactDefault.default.Component {
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
             id: "btn-update-my-account",
             variant: "warning",
+            type: "submit",
             __source: {
                 fileName: "/Users/koolau/Documents/myProjects/myFlix-client/src/components/profile-view/profile-view.jsx",
                 lineNumber: 200
@@ -29425,7 +29434,6 @@ class ProfileView extends _reactDefault.default.Component {
         }, "Update Profile"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
             id: "btn-delete-my-account",
             variant: "warning",
-            type: "submit",
             onClick: (e)=>this.handleDeleteUser(e)
             ,
             __source: {
