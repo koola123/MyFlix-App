@@ -8,11 +8,11 @@ import './movie-view.scss';
 
 export class MovieView extends React.Component {
 
-  addFavorite() {
+  addFavorite(e, movie) {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('user');
 
-    axios.post('https://my-flix-48028.herokuapp.com/users/${username}/movies/${this.props.movie._id}', {}, {
+    axios.post(`https://my-flix-48028.herokuapp.com/users/${username}/${this.props.movie._id}`, {}, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(function (response) {
@@ -27,9 +27,10 @@ export class MovieView extends React.Component {
     const { movie, onBackClick } = this.props;
 
     return (
+
       <div className="movie-view">
         <div className="movie-poster">
-          <img src={movie.ImagePath} />
+          <img src={movie.ImagePath} style={{ width: '69rem' }} />
         </div>
         <div className="movie-title">
           <span className="value">{movie.Title}</span>
@@ -52,11 +53,9 @@ export class MovieView extends React.Component {
         <Link to={`/genres/${movie.Genre.Name}`}>
           <Button id="btn-warning" variant="warning">Genre</Button>
         </Link>
-        <Link to={`/movies/${movie.Title}`}>
-          <Button id="btn-warning" variant="warning" value={movie._id} onClick={(e) => this.addFavorite(e, movie)}>
-            Add to Favorites
-          </Button>
-        </Link>
+        <Button id="btn-warning" variant="warning" value={movie._id} onClick={(e) => this.addFavorite(e, movie)}>
+          Add to Favorites
+        </Button>
         <Button id="btn-warning" onClick={() => onBackClick(null)} variant="success">Back to Movies</Button>
       </div >
     );
