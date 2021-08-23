@@ -80,14 +80,13 @@ export class ProfileView extends React.Component {
     const username = localStorage.getItem("user");
 
     // Update information user profile
-    axios.put(`https://my-flix-48028.herokuapp.com/users/${username}`, {
+    axios.put(`http://my-flix-48028.herokuapp.com/users/${username}`, {
+      Username: this.state.Username,
+      Password: this.state.Password,
+      Email: this.state.Email,
+      Birthday: this.state.Birthday,
+    }, {
       headers: { Authorization: `Bearer ${token}` },
-      data: {
-        Username: newUsername ? newUsername : this.state.Username,
-        Password: newPassword ? newPassword : this.state.Password,
-        Email: newEmail ? newEmail : this.state.Email,
-        Birthday: newBirthday ? newBirthday : this.state.Birthday,
-      },
     })
       .then((response) => {
         alert("Saved new changes");
