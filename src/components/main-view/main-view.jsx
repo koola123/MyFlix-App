@@ -11,7 +11,7 @@ import { MovieView } from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
 import { ProfileView } from '../profile-view/profile-view';
-import { MoviesList } from '../movies-list/movies-list';
+import MoviesList from '../movies-list/movies-list';
 import { Row, Col, Container } from 'react-bootstrap';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
@@ -54,21 +54,16 @@ class MainView extends React.Component {
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
-      this.setState({
-        user: localStorage.getItem('user')
-      });
+      this.props.setUser(localStorage.getItem('user'))
       this.getMovies(accessToken);
     }
   }
 
   onLoggedIn(authData) {
     console.log(authData);
-    this.setState({
-      user: authData.user.Username
-    });
-
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
+    this.props.setUser(authData.user.Username)
     this.getMovies(authData.token);
   }
 

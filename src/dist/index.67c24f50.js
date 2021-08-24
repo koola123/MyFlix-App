@@ -24677,6 +24677,16 @@ function user(state = '', action) {
     switch(action.type){
         case _actions.SET_USER:
             return action.value;
+        case _actions.UPDATE_USER:
+            return action.value;
+        default:
+            return state;
+    }
+}
+function favorites(state = '', action) {
+    switch(action.type){
+        case _actions.UPDATE_FAVORITES:
+            return action.value;
         default:
             return state;
     }
@@ -24684,7 +24694,8 @@ function user(state = '', action) {
 const moviesApp = _redux.combineReducers({
     visibilityFilter,
     movies,
-    user
+    user,
+    favorites
 });
 exports.default = moviesApp;
 
@@ -24697,15 +24708,25 @@ parcelHelpers.export(exports, "SET_FILTER", ()=>SET_FILTER
 );
 parcelHelpers.export(exports, "SET_USER", ()=>SET_USER
 );
+parcelHelpers.export(exports, "UPDATE_USER", ()=>UPDATE_USER
+);
+parcelHelpers.export(exports, "UPDATE_FAVORITES", ()=>UPDATE_FAVORITES
+);
 parcelHelpers.export(exports, "setMovies", ()=>setMovies
 );
 parcelHelpers.export(exports, "setFilter", ()=>setFilter
 );
 parcelHelpers.export(exports, "setUser", ()=>setUser
 );
+parcelHelpers.export(exports, "updateUser", ()=>updateUser
+);
+parcelHelpers.export(exports, "updateFavorites", ()=>updateFavorites
+);
 const SET_MOVIES = 'SET_MOVIES';
 const SET_FILTER = 'SET_FILTER';
 const SET_USER = 'SET_USER';
+const UPDATE_USER = 'UPDATE_USER';
+const UPDATE_FAVORITES = 'UPDATE_FAVORITES';
 function setMovies(value) {
     return {
         type: SET_MOVIES,
@@ -24721,6 +24742,18 @@ function setFilter(value) {
 function setUser(value) {
     return {
         type: SET_USER,
+        value
+    };
+}
+function updateUser(value) {
+    return {
+        type: UPDATE_USER,
+        value
+    };
+}
+function updateFavorites(value) {
+    return {
+        type: UPDATE_FAVORITES,
         value
     };
 }
@@ -24796,6 +24829,7 @@ var _directorView = require("../director-view/director-view");
 var _genreView = require("../genre-view/genre-view");
 var _profileView = require("../profile-view/profile-view");
 var _moviesList = require("../movies-list/movies-list");
+var _moviesListDefault = parcelHelpers.interopDefault(_moviesList);
 var _reactBootstrap = require("react-bootstrap");
 var _navbar = require("react-bootstrap/Navbar");
 var _navbarDefault = parcelHelpers.interopDefault(_navbar);
@@ -24832,19 +24866,15 @@ class MainView extends _reactDefault.default.Component {
     componentDidMount() {
         let accessToken = localStorage.getItem('token');
         if (accessToken !== null) {
-            this.setState({
-                user: localStorage.getItem('user')
-            });
+            this.props.setUser(localStorage.getItem('user'));
             this.getMovies(accessToken);
         }
     }
     onLoggedIn(authData) {
         console.log(authData);
-        this.setState({
-            user: authData.user.Username
-        });
         localStorage.setItem('token', authData.token);
         localStorage.setItem('user', authData.user.Username);
+        this.props.setUser(authData.user.Username);
         this.getMovies(authData.token);
     }
     onLoggedOut() {
@@ -24864,13 +24894,13 @@ class MainView extends _reactDefault.default.Component {
         return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "/Users/koolau/Documents/myProjects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 94
+                lineNumber: 89
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Container, {
             __source: {
                 fileName: "/Users/koolau/Documents/myProjects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 95
+                lineNumber: 90
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default, {
@@ -24880,29 +24910,46 @@ class MainView extends _reactDefault.default.Component {
             variant: "dark",
             __source: {
                 fileName: "/Users/koolau/Documents/myProjects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 96
+                lineNumber: 91
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Container, {
             __source: {
                 fileName: "/Users/koolau/Documents/myProjects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 97
+                lineNumber: 92
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default.Brand, {
             __source: {
                 fileName: "/Users/koolau/Documents/myProjects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 98
+                lineNumber: 93
             },
             __self: this
         }, "MyFlix!"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
             __source: {
                 fileName: "/Users/koolau/Documents/myProjects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 99
+                lineNumber: 94
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
             to: "/",
+            __source: {
+                fileName: "/Users/koolau/Documents/myProjects/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 95
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+            id: "btn-yellow",
+            variant: "link",
+            type: "submit",
+            size: "md",
+            __source: {
+                fileName: "/Users/koolau/Documents/myProjects/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 96
+            },
+            __self: this
+        }, "Home")), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
+            to: "/profile",
             __source: {
                 fileName: "/Users/koolau/Documents/myProjects/myFlix-client/src/components/main-view/main-view.jsx",
                 lineNumber: 100
@@ -24918,23 +24965,6 @@ class MainView extends _reactDefault.default.Component {
                 lineNumber: 101
             },
             __self: this
-        }, "Home")), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
-            to: "/profile",
-            __source: {
-                fileName: "/Users/koolau/Documents/myProjects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 105
-            },
-            __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
-            id: "btn-yellow",
-            variant: "link",
-            type: "submit",
-            size: "md",
-            __source: {
-                fileName: "/Users/koolau/Documents/myProjects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 106
-            },
-            __self: this
         }, "Profile"))), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
             id: "btn-logout",
             onClick: ()=>{
@@ -24944,14 +24974,14 @@ class MainView extends _reactDefault.default.Component {
             size: "lg",
             __source: {
                 fileName: "/Users/koolau/Documents/myProjects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 111
+                lineNumber: 106
             },
             __self: this
         }, "Logout"))), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
             className: "main-view justify-content-md-center",
             __source: {
                 fileName: "/Users/koolau/Documents/myProjects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 115
+                lineNumber: 110
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -24964,13 +24994,13 @@ class MainView extends _reactDefault.default.Component {
                 if (movies.length === 0) return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
                     className: "main-view"
                 }));
-                return(/*#__PURE__*/ _reactDefault.default.createElement(_moviesList.MoviesList, {
+                return(/*#__PURE__*/ _reactDefault.default.createElement(_moviesListDefault.default, {
                     movies: movies
                 }));
             },
             __source: {
                 fileName: "/Users/koolau/Documents/myProjects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 116
+                lineNumber: 111
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -24983,7 +25013,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/koolau/Documents/myProjects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 124
+                lineNumber: 119
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -24995,7 +25025,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/koolau/Documents/myProjects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 131
+                lineNumber: 126
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -25017,7 +25047,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/koolau/Documents/myProjects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 137
+                lineNumber: 132
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -25039,7 +25069,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/koolau/Documents/myProjects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 147
+                lineNumber: 142
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -25061,7 +25091,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/koolau/Documents/myProjects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 158
+                lineNumber: 153
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -25080,7 +25110,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/koolau/Documents/myProjects/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 169
+                lineNumber: 164
             },
             __self: this
         })))));
@@ -31099,6 +31129,7 @@ class ProfileView extends _reactDefault.default.Component {
             const movie = movies.find((favMovie)=>favMovie._id === movieId
             );
             return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.CardDeck, {
+                key: movieId,
                 __source: {
                     fileName: "/Users/koolau/Documents/myProjects/myFlix-client/src/components/profile-view/profile-view.jsx",
                     lineNumber: 158
@@ -31108,7 +31139,6 @@ class ProfileView extends _reactDefault.default.Component {
                 style: {
                     width: '10rem'
                 },
-                key: movie._id,
                 __source: {
                     fileName: "/Users/koolau/Documents/myProjects/myFlix-client/src/components/profile-view/profile-view.jsx",
                     lineNumber: 159
@@ -42149,7 +42179,7 @@ function VisibilityFilterInput(props) {
         onChange: (e)=>props.setFilter(e.target.value)
         ,
         value: props.visibilityFilter,
-        placeholder: "filter movies",
+        placeholder: "Filter Movies...",
         __source: {
             fileName: "/Users/koolau/Documents/myProjects/myFlix-client/src/components/visibility-filter-input/visibility-filter-input.jsx",
             lineNumber: 8

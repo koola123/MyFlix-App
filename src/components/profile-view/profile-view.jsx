@@ -155,8 +155,8 @@ export class ProfileView extends React.Component {
 
 
                   return (
-                    <CardDeck>
-                      <Card style={{ width: '10rem' }} key={movie._id}>
+                    <CardDeck key={movieId}>
+                      <Card style={{ width: '10rem' }}>
                         <Card.Img style={{ width: '10rem' }} className="movieCard" variant="top" src={movie.ImagePath} />
                         <Card.Body>
                           <Card.Title className="movie-card-title">{movie.Title}</Card.Title>
