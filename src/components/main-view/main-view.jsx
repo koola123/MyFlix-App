@@ -71,6 +71,7 @@ class MainView extends React.Component {
   onLoggedOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    window.location.href = '/';
     this.setState({
       user: null
     });
@@ -103,7 +104,8 @@ class MainView extends React.Component {
                   </Button>
                 </Link>
               </Col>
-              <Button id="btn-logout" onClick={() => { this.onLoggedOut() }} variant="outline-success" size="lg">Logout</Button>
+              <Button id="btn-logout" onClick={() => { this.onLoggedOut() }} variant="outline-success" size="lg">Logout
+              </Button>
             </Container>
           </Navbar>
 
