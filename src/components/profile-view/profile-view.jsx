@@ -144,7 +144,7 @@ export class ProfileView extends React.Component {
     return (
       <Row className="profile-view justify-content-md-center">
         <Card className="profile-card">
-          <h2 className="first-header">Welcome to your Profile!</h2>
+          <h2 className="first-header">Welcome to Your Profile!</h2>
           <Card.Body>
             <h1 className="favorite-movies-header">Favorite Movies:</h1>
             {FavoriteMovies.length === 0 && <div className="text-center">*** The List is currently empty ***</div>}
@@ -174,21 +174,21 @@ export class ProfileView extends React.Component {
             <Form noValidate validated={validated} className="update-form" onSubmit={(e) => this.handleUpdate(e, this.Name, this.Username, this.Password, this.Email, this.Birthday)}>
 
               <Form.Group controlId="Username">
-                <h2 className="profile-change">Update Profile Information:</h2>
+                <h2 className="profile-change">Update Your Profile Information:</h2>
                 <Form.Label className="form-label">Username: </Form.Label>
-                <Form.Control type="text" placeholder="Enter username" onChange={(e) => this.setUsername(e.target.value)} />
+                <Form.Control type="text" placeholder="Enter new Username" onChange={(e) => this.setUsername(e.target.value)} />
               </Form.Group>
 
               <Form.Group controlId="Password">
                 <Form.Label className="form-label">
                   Password: <span className="required"></span>
                 </Form.Label>
-                <Form.Control type="password" placeholder="Password" onChange={(e) => this.setPassword(e.target.value)} />
+                <Form.Control type="password" placeholder="Enter new Password" onChange={(e) => this.setPassword(e.target.value)} />
               </Form.Group>
 
               <Form.Group controlId="Email">
                 <Form.Label className="form-label">Email: </Form.Label>
-                <Form.Control type="email" placeholder="Email" onChange={(e) => this.setEmail(e.target.value)} />
+                <Form.Control type="email" placeholder="Enter new Email" onChange={(e) => this.setEmail(e.target.value)} />
               </Form.Group>
 
               <Form.Group controlId="Birthday">

@@ -73,7 +73,8 @@ class MainView extends React.Component {
     localStorage.removeItem('user');
     window.location.href = '/';
     this.setState({
-      user: null
+      user: null,
+      token: null,
     });
   }
 
