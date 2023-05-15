@@ -12,7 +12,7 @@ export class MovieView extends React.Component {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('user');
 
-    axios.post(`https://my-flix-48028.herokuapp.com/users/${username}/${this.props.movie._id}`, {}, {
+    axios.post(`https://my-blockbusters.herokuapp.com/users/${username}/${this.props.movie._id}`, {}, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(function (response) {
@@ -30,24 +30,21 @@ export class MovieView extends React.Component {
     return (
 
       <div className="movie-view">
+          <span className="movie-title">{movie.Title}!</span>
         <div className="movie-poster">
-          <img src={movie.ImagePath} style={{ width: '69rem' }} />
-        </div>
-        <div className="movie-title">
-          <span className="value">{movie.Title}</span>
-        </div>
-        <div className="movie-director">
-          <span className="label">Director: </span>
-          <span className="value">{movie.Director.Name}</span>
-          <div className="movie-description">
-            <span className="label">Description: </span>
-            <span className="value">{movie.Description}</span>
+          <img src={movie.ImagePath} style={{ width: '15rem' }} />
           </div>
+        <div className="movie-director">
+          <span>Director: </span>
+          <span>"{movie.Director.Name}"</span>
+          <div className="movie-genre">
+          <span>Film category / Genre: </span>
+          <span>{movie.Genre.Name}</span>
         </div>
-        <div className="movie-genre">
-          <span className="label">Genre: </span>
-          <span className="value">{movie.Genre.Name}</span>
-        </div>
+          <div className="movie-description">
+            <span>{movie.Description}</span>
+          </div>
+        </div>      
         <Link to={`/directors/${movie.Director.Name}`}>
           <Button id="btn-warning" variant="warning">Director</Button>
         </Link>

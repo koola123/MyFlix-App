@@ -15,7 +15,7 @@ export function LoginView(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password);
-    axios.post('https://my-flix-48028.herokuapp.com/login', {
+    axios.post('https://my-blockbusters.herokuapp.com/login', {
       Username: username,
       Password: password
     })
@@ -32,18 +32,18 @@ export function LoginView(props) {
     <Form className="LoginForm">
       <Form.Group controlId="formUsername">
         <Form.Label>Username</Form.Label>
-        <Form.Control placeholder="Enter username" type="text" onChange={e => setUsername(e.target.value)} />
+        <Form.Control placeholder="Username*" type="text" onChange={e => setUsername(e.target.value)} />
       </Form.Group>
 
       <Form.Group controlId="formPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control placeholder="Enter password" type="Password" onChange={e => setPassword(e.target.value)} />
+        <Form.Control placeholder="Password*" type="Password" onChange={e => setPassword(e.target.value)} />
       </Form.Group>
-      <Button id="btn-yellow" variant="warning" type="submit" size="lg" onClick={handleSubmit}>
+      <Button id="btn-yellow" variant="secondary" type="submit" size="lg" onClick={handleSubmit}>
         Login
       </Button>
       <Link to={'/register'}>
-        <Button id="btn-yellow-new" variant="warning" type="submit" size="lg">
+        <Button id="btn-yellow-new" variant="secondary" type="submit" size="lg">
           Register
         </Button>
       </Link>

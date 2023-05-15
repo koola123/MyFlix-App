@@ -1,31 +1,38 @@
 .movie-view {
   margin-bottom: 100px;
+  width: 100%;
+  background: lightgray;
+  padding: 75px;
 }
 
 .movie-poster {
-margin-bottom: 25px;
+  height: 450px;
+  margin-top: 20px;
 }
 
 .movie-title {
-  font-size: 35px;
+  font-size: 1rem;
   font-weight: bold;
-}
-
-.movie-director .value {
-  font-size: 20px;
+  text-align: center;
+  color: #8b0000;
 }
 
 .movie-description {
   margin-left: 0;
-  font-size: 20px;
+  font-size: 1.2rem;
   margin-bottom: 20px;
+  font-weight: bold;
+  text-align: justify;
+}
+
+.movie-director {
+  margin-bottom: 40px;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 .movie-genre {
-  margin-bottom: 40px;
-  font-size: 20px;
-}
-
-.label {
-  font-size: 20px;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  font-weight: bold;
 }

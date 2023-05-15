@@ -15,7 +15,7 @@ export function RegistrationView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('https://my-flix-48028.herokuapp.com/users', {
+    axios.post('https://my-blockbusters.herokuapp.com/users', {
       Username: username,
       Password: password,
       Email: email,
@@ -32,27 +32,27 @@ export function RegistrationView(props) {
   };
 
   return (
-    <Form>
+    <Form className="registrationForm">
       <Form.Group controlId="formUsername">
         <Form.Label>Username </Form.Label>
-        <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
+        <Form.Control type="text" placeholder="Username*" onChange={e => setUsername(e.target.value)} />
       </Form.Group>
 
       <Form.Group controlId="formPassword">
         <Form.Label>Password </Form.Label>
-        <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
+        <Form.Control type="password" placeholder="Password*" onChange={e => setPassword(e.target.value)} />
       </Form.Group>
 
       <Form.Group controlId="formEmail">
         <Form.Label>Email address </Form.Label>
-        <Form.Control placeholder="Enter email" type="email" onChange={e => setEmail(e.target.value)} />
+        <Form.Control type="email" placeholder="Email*" onChange={e => setEmail(e.target.value)} />
       </Form.Group>
 
       <Form.Group controlId="formBirthdate">
         <Form.Label>Birthday </Form.Label>
         <Form.Control type="date" onChange={e => setBirthday(e.target.value)} />
       </Form.Group>
-      <Button id="btn-warning" variant="warning" type="submit" onClick={handleSubmit}>
+      <Button id="btn-warning" type="submit" onClick={handleSubmit}>
         Submit
       </Button>
     </Form>
