@@ -2,6 +2,8 @@
 
 This is the client-side development for an application called myFlix based on its existing server-side code (REST API and database).
 
+<b>[LIVE DEMO](myflix-client123.netlify.app)</b>
+
 ## USER STORIES
 
 - As a user, I want to be able to access information on movies, directors, and genres so that I can learn more about movies I've watched or am interested in.
