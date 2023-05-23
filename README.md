@@ -1,63 +1,84 @@
-# myFlix-client
+# myFlix
 
-This is the client-side development for an application called myFlix based on its existing server-side code (REST API and database).
+The client side of a movies app called "Myflix" built with the MERN stack in which users can search for and save information about movies. Movie and user data is stored in a database (MongoDB), and access to that data will be provided via a REST API (also known as a “RESTful API”). It is also a single-page, responsive app with routing, rich interactions, several interface views, and a polished user experience. 
 
-<b>[LIVE DEMO](https://myflix-movies-client.netlify.app/)</b>
+<br>
 
-## USER STORIES
+<strong>[LIVE DEMO](https://myflix-movies-client.netlify.app/)</strong>
+
+<br>
+
+## Placeholder for Images
+<p align-right>
+<img src="http://via.placeholder.com/150x150" alt="movie app image">
+<img src="http://via.placeholder.com/150x150" alt="movie app image">
+<img src="http://via.placeholder.com/150x150" alt="movie app image">
+   </p>
+ 
+## Technology used:
+
+- React 
+- JSX 
+- CSS
+- Parcel
+- React Bootstrap / Bootstrap
+- Class components
+- React Redux for state management
+
+## User Stories:
 
 - As a user, I want to be able to access information on movies, directors, and genres so that I can learn more about movies I've watched or am interested in.
 - As a user, I want to be able to create a profile so I can save data about my favorite movies.
 
-## FEATURES AND REQUIREMENTS
+## Features and Requirements:
 
-### Main view
+## Main View:
 
 * Returns al list of ALL movies to the user (each listed item with an image, title, and description)
 * Sorting and filtering
 * Ability to select a movie for more details
 
-### Single movie view
+## Single Movie View:
 
 * Returns data (description, genre, director, image) about a single movie to the user
 * Allows users to add a movie to their list of favorites
 
-### Login view
+## Login View:
 
 * Allows users to log in with a username and password
 * Registration view
 * Allows new users to register (username, password, email, birthday)
 
-### Genre view
+## Genre View:
 
 * Returns data about a genre, with a name and description
 * Displays example movies
 
-### Director view
+## Director View:
 
 * Returns data about a director (name, bio, birt hyear, death year - if appropriate)
 * Displays example movies
 
-### Profile view
+## Profile View:
 
 * Allows users to update their user info (username.password.email.date of birth)
 * Allows existing users to deregister
 * Displays favorite movies
 * Allows users to remove a movie from their list of favorites
 
-##### Languages & Tools used for building this App:
-```html
-   <script> MERN-Stack (MongoDB, ExpressJS, ReactJS, NodeJS) </script>
+## 🛠 Installation: 
  ```
-```html
-   <html> HTML5, CSS3, SCSS </html>
- ```
+ git clone https://github.com/koola123/myFlix.git
+ cd myFlix
+ npm install
+ ````
  
- #### Author
+#### Then run the app on localhost:1234 in your browser
  
- Matthias Müringer
+ <br>
  
+ `parcel src/index.html`
  
-#### Version
+ <br>
  
- 1.0.0
+Version 1.0.0
