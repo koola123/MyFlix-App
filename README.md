@@ -1,4 +1,4 @@
-# myFlix
+# myFlix-React-client
 
 The client side for a movies app called "MyFlix" built with the MERN stack in which users can search for and save information about movies. Movie and user data is stored in a database (MongoDB), and access to that data will be provided via a REST API (also known as a “RESTful API”). It is also a single-page, responsive app with routing, rich interactions, several interface views, and a polished user experience. 
 
