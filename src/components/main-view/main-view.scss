@@ -1,11 +1,20 @@
 #main-nav {
-  font-style: bold;
-  color: white;
-  background: #8b0000;
-  font-weight: 800;
-  width: 1105px;
+  background-color: #3f51b5;
 }
 
-#btn-logout {
-  background: #8b0000;
+.main-view::before {
+  content: "";
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.7;
+  background: url("../../assets/movieposter.jpg");
+  background-repeat: repeat;
+  background-size: cover;
+  background-position: auto;
+  width: 100%;
+  height: 100vh;
 }

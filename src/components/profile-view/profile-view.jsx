@@ -30,8 +30,8 @@ export class ProfileView extends React.Component {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
+        console.log(response);
         this.setState({
-          Name: response.data.Name,
           Username: response.data.Username,
           Password: response.data.Password,
           Email: response.data.Email,
@@ -91,7 +91,7 @@ export class ProfileView extends React.Component {
           Username: this.state.Username,
           Password: this.state.Password,
           Email: this.state.Email,
-          Birthday: this.state.Birthday,
+          Birthday: this.state.Birthdate,
         },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -155,11 +155,6 @@ export class ProfileView extends React.Component {
         <Card className="profile-card">
           <Card.Body>
             <h1 className="favorite-movies-header">Favorite Movies:</h1>
-            {FavoriteMovies.length === 0 && (
-              <div className="text-center">
-                *** The List is currently empty ***
-              </div>
-            )}
             <div className="favorites-movies ">
               {FavoriteMovies.length > 0 &&
                 FavoriteMovies.map((movieId) => {
@@ -202,7 +197,6 @@ export class ProfileView extends React.Component {
               onSubmit={(e) =>
                 this.handleUpdate(
                   e,
-                  this.Name,
                   this.Username,
                   this.Password,
                   this.Email,
@@ -211,52 +205,53 @@ export class ProfileView extends React.Component {
               }
             >
               <Form.Group controlId="Username">
-                <Form.Label className="form-label">Username: </Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Username*"
+                  size="md"
+                  placeholder="Username"
+                  required
                   onChange={(e) => this.setUsername(e.target.value)}
                 />
               </Form.Group>
 
               <Form.Group controlId="Password">
-                <Form.Label className="form-label">
-                  Password: <span className="required"></span>
-                </Form.Label>
                 <Form.Control
                   type="password"
-                  placeholder="Password*"
+                  size="md"
+                  placeholder="Password"
+                  required
                   onChange={(e) => this.setPassword(e.target.value)}
                 />
               </Form.Group>
 
               <Form.Group controlId="Email">
-                <Form.Label className="form-label">Email: </Form.Label>
                 <Form.Control
                   type="email"
-                  placeholder="Email*"
+                  size="md"
+                  placeholder="Email"
+                  required
                   onChange={(e) => this.setEmail(e.target.value)}
                 />
               </Form.Group>
 
               <Form.Group controlId="Birthday">
-                <Form.Label className="form-label">Birthday: </Form.Label>
                 <Form.Control
                   type="date"
+                  size="md"
                   onChange={(e) => this.setBirthday(e.target.value)}
                 />
               </Form.Group>
               <Card.Body>
                 <Button
                   id="btn-update-my-account"
-                  variant="primary"
+                  variant="secondary"
                   type="submit"
                 >
                   Update Profile
                 </Button>
                 <Button
                   id="btn-delete-my-account"
-                  variant="primary"
+                  variant="secondary"
                   onClick={(e) => this.handleDeleteUser(e)}
                 >
                   Delete Account

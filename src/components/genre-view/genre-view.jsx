@@ -1,10 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Button from 'react-bootstrap/Button';
-import './genre-view.scss';
+import React from "react";
+import PropTypes from "prop-types";
+import Button from "react-bootstrap/Button";
+import "./genre-view.scss";
 
 export class GenreView extends React.Component {
-
   render() {
     const { genre, onBackClick } = this.props;
 
@@ -16,7 +15,15 @@ export class GenreView extends React.Component {
         <div className="genre-description">
           <span className="value">{genre.Description}</span>
         </div>
-        <Button id="btn-warning" onClick={() => { onBackClick(null); }} variant="warning">Back to Movies</Button>
+        <Button
+          id="btn-warning"
+          onClick={() => {
+            onBackClick(null);
+          }}
+          variant="warning"
+        >
+          Back to Movies
+        </Button>
       </div>
     );
   }
@@ -25,7 +32,7 @@ export class GenreView extends React.Component {
 GenreView.propTypes = {
   genre: PropTypes.shape({
     Name: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired
+    Description: PropTypes.string.isRequired,
   }).isRequired,
-  onBackClick: PropTypes.func.isRequired
+  onBackClick: PropTypes.func.isRequired,
 };

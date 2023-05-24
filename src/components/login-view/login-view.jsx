@@ -1,53 +1,69 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
-import './login-view.scss';
+import "./login-view.scss";
 
-import axios from 'axios';
+import axios from "axios";
 
 export function LoginView(props) {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     console.log(username, password);
-    axios.post('https://my-blockbusters.herokuapp.com/login', {
-      Username: username,
-      Password: password
-    })
-      .then(response => {
+    axios
+      .post("https://my-blockbusters.herokuapp.com/login", {
+        Username: username,
+        Password: password,
+      })
+      .then((response) => {
         const data = response.data;
         props.onLoggedIn(data);
       })
-      .catch(e => {
-        console.log('no such user')
+      .catch((event) => {
+        alert("Login failed");
+        console.log("no such user");
       });
   };
 
   return (
     <Form className="LoginForm">
+      <h1>Welcome to MyFlix!</h1>
+      <p className="title-brand">"The Ultimate Star Wars Movies Collection"</p>
       <Form.Group controlId="formUsername">
-        <Form.Label>Username</Form.Label>
-        <Form.Control placeholder="Username*" type="text" onChange={e => setUsername(e.target.value)} />
+        <Form.Control
+          placeholder="Username"
+          size="sm"
+          type="text"
+          onChange={(e) => setUsername(e.target.value)}
+        />
       </Form.Group>
-
       <Form.Group controlId="formPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control placeholder="Password*" type="Password" onChange={e => setPassword(e.target.value)} />
+        <Form.Control
+          placeholder="Password"
+          size="sm"
+          type="Password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
       </Form.Group>
-      <Button id="btn-yellow" variant="secondary" type="submit" size="lg" onClick={handleSubmit}>
+      <Button
+        id="login-btn-color"
+        variant="secondary"
+        type="submit"
+        size="lg"
+        onClick={handleSubmit}
+      >
         Login
       </Button>
-      <Link to={'/register'}>
-        <Button id="btn-yellow-new" variant="secondary" type="submit" size="lg">
-          Register
-        </Button>
+      <span className="login-text">Don't have an account?</span>
+      <Link to={"/register"}>
+        <span className="login-signup">Sign up</span>
       </Link>
-    </Form >
+    </Form>
   );
 }
 
@@ -56,5 +72,5 @@ LoginView.propTypes = {
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
   }),
-  onLoggedIn: PropTypes.func.isRequired
+  onLoggedIn: PropTypes.func.isRequired,
 };
