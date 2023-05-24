@@ -7,10 +7,11 @@ import { setFilter } from "../../actions/actions";
 function VisibilityFilterInput(props) {
   return (
     <Form.Control
+      className="visibility-filter"
       onChange={(e) => props.setFilter(e.target.value)}
       value={props.visibilityFilter}
       placeholder="Search for a movie..."
-      style={{ width: "69rem" }}
+      style={{ width: "71.233rem", marginTop:"50px"}}
     />
   );
 }

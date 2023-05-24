@@ -12,12 +12,12 @@ export class MovieCard extends React.Component {
     const { movie } = this.props;
 
     return (
-      <Card style={{ width: "17rem", height: "36rem" }}>
+      <Card style={{ width: "18rem", height: "36rem" }}>
         <Card.Img variant="top" src={movie.ImagePath} />
         <Card.Body>
-          <Card.Title>{movie.Title}</Card.Title>
+          <Card.Title style={{ height: "50%"}}>{movie.Title}</Card.Title>
           <Link to={`/movies/${movie._id}`}>
-            <Button size="md">
+            <Button style={{ width: "100%", height: "45px" }} variant="primary" size="md">
               Details
             </Button>
           </Link>

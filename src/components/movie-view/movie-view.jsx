@@ -25,6 +25,7 @@ export class MovieView extends React.Component {
         console.log(error);
       });
   }
+  
 
   render() {
     const { movie, onBackClick } = this.props;
@@ -48,22 +49,26 @@ export class MovieView extends React.Component {
         </div>
         <div className="mt-4">
         <Link to={`/directors/${movie.Director.Name}`}>
-          <Button>
+          <Button
+          className="movie-view-button">
             Director
           </Button>
         </Link>
         <Link to={`/genres/${movie.Genre.Name}`}>
-          <Button>
+          <Button
+          className="movie-view-button">
             Genre
           </Button>
         </Link>
         <Button
+          className="movie-view-button"
           value={movie._id}
           onClick={(e) => this.addFavorite(e, movie)}
         >
           Favorites
         </Button>
         <Button
+          className="movie-view-button"
           onClick={() => onBackClick(null)}
         >
           Back to Movies

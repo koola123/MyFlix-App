@@ -16,13 +16,13 @@ export class GenreView extends React.Component {
           <span className="value">{genre.Description}</span>
         </div>
         <Button
-          id="btn-warning"
+          className="genre-view-button"
           onClick={() => {
             onBackClick(null);
           }}
-          variant="warning"
+          variant="primary"
         >
-          Back to Movies
+          Back
         </Button>
       </div>
     );

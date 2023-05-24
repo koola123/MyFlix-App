@@ -20,13 +20,13 @@ export class DirectorView extends React.Component {
           <span className="value">{director.Birth}</span>
         </div>
         <Button
-          id="btn-warning"
+          className="director-view-button"
           onClick={() => {
             onBackClick(null);
           }}
-          variant="warning"
+          variant="primary"
         >
-          Back to Movies
+          Back
         </Button>
       </div>
     );
