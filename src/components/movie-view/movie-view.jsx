@@ -6,20 +6,21 @@ import { Link } from "react-router-dom";
 import "./movie-view.scss";
 
 export class MovieView extends React.Component {
+
+  // Add a movie to users favorites
   addFavorite(e, movie) {
     const token = localStorage.getItem("token");
     const username = localStorage.getItem("user");
-
     axios
       .post(
-        `https://my-blockbusters.herokuapp.com/users/${username}/${this.props.movie._id}`,
+        `https://my-blockbusters.herokuapp.com/users/${username}/movies/${movie._id}`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       )
       .then(function (response) {
-        alert("Added to Favorites List");
+        alert("Added to favorites list");
       })
       .catch(function (error) {
         console.log(error);
@@ -35,16 +36,16 @@ export class MovieView extends React.Component {
         <div className="d-flex movie-poster">
           <img src={movie.ImagePath} style={{ width: "350px" }} />
           <div className="movie-text">
-          <div className="movie-director">
-            <span>Director: </span>
-            <span>{movie.Director.Name}</span>
-            <div className="movie-genre">
-              <span>Film category / Genre: </span>
-              <span>{movie.Genre.Name}</span>
-            </div>
-            <div className="movie-description">
-              <span>{movie.Description}</span>
-            </div>
+            <div className="movie-director">
+              <span>Director: </span>
+              <span>{movie.Director.Name}</span>
+              <div className="movie-genre">
+                <span>Film category / Genre: </span>
+                <span>{movie.Genre.Name}</span>
+              </div>
+              <div className="movie-description">
+                <span>{movie.Description}</span>
+              </div>
             </div>
           </div>
         </div>

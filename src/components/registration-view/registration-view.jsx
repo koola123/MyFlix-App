@@ -64,7 +64,7 @@ export function RegistrationView(props) {
         />
       </Form.Group>
 
-      <Form.Group controlId="formBirthdate">
+      <Form.Group controlId="formBirthday">
         <Form.Control
           type="date"
           size="sm"

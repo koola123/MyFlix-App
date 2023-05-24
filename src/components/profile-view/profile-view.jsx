@@ -1,18 +1,18 @@
 import React from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
-import { Button, Card, CardDeck, Form, Row } from "react-bootstrap";
+import { Button, Card, Form, Row } from "react-bootstrap";
 
 import "./profile-view.scss";
 
 export class ProfileView extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       Username: "",
       Password: "",
       Email: "",
-      Birthdate: "",
+      Birthday: "",
       FavoriteMovies: [],
       validated: null,
     };
@@ -38,7 +38,7 @@ export class ProfileView extends React.Component {
           Username: response.data.Username,
           Password: response.data.Password,
           Email: response.data.Email,
-          Birthdate: response.data.Birthdate,
+          Birthday: response.data.Birthday,
           FavoriteMovies: response.data.FavoriteMovies,
         });
       })
@@ -53,19 +53,18 @@ export class ProfileView extends React.Component {
     const username = localStorage.getItem("user");
     axios
       .delete(
-        `https://my-blockbusters.herokuapp.com/users/${username}/${movie._id}`,
+        `https://my-blockbusters.herokuapp.com/users/${username}/movies/${movie._id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       )
       .then(() => {
-        alert("The movie has been removed");
+        alert("The movie has been removed from the favorites list");
         this.componentDidMount();
       })
       .catch((error) => {
         console.log(error);
       });
-    // .then(() => window.location.reload());
   }
 
   handleUpdate(e) {
@@ -95,7 +94,7 @@ export class ProfileView extends React.Component {
           Username: this.state.Username,
           Password: this.state.Password,
           Email: this.state.Email,
-          Birthday: this.state.Birthdate,
+          Birthday: this.state.Birthday,
         },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -138,6 +137,30 @@ export class ProfileView extends React.Component {
       });
   };
 
+  setUsername(value) {
+    this.setState({
+      Username: value,
+    });
+  }
+
+  setPassword(value) {
+    this.setState({
+      Passwort: value,
+    })
+  }
+
+  setEmail(value) {
+    this.setState({
+      Email: value,
+    })
+  }
+
+  setBirthday(value) {
+    this.setState({
+      Birthday: value,
+    })
+  }
+
   render() {
     const { movies } = this.props;
     const { FavoriteMovies, validated } = this.state;
@@ -155,7 +178,7 @@ export class ProfileView extends React.Component {
                   this.state.Username,
                   this.state.Password,
                   this.state.Email,
-                  this.state.Birthdate
+                  this.state.Birthday
                 )
               }
             >
@@ -166,7 +189,7 @@ export class ProfileView extends React.Component {
                   placeholder="Username"
                   value={this.state.Username}
                   required
-                  onChange={(e) => setUsername(e.target.value)}
+                  onChange={(e) => this.setUsername(e.target.value)}
                 />
               </Form.Group>
               <Form.Group controlId="Password">
@@ -176,7 +199,7 @@ export class ProfileView extends React.Component {
                   placeholder="Password"
                   value={this.state.Password}
                   required
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => this.setPassword(e.target.value)}
                 />
               </Form.Group>
               <Form.Group controlId="Email">
@@ -186,14 +209,14 @@ export class ProfileView extends React.Component {
                   placeholder="Email"
                   value={this.state.Email}
                   required
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => this.setEmail(e.target.value)}
                 />
               </Form.Group>
-              <Form.Group controlId="Birthdate">
+              <Form.Group controlId="Birthday">
                 <Form.Control
                   type="date"
                   size="md"
-                  onChange={(e) => setBirthday(e.target.value)}
+                  onChange={(e) => this.setBirthday(e.target.value)}
                 />
               </Form.Group>
                 <Button 
@@ -205,7 +228,7 @@ export class ProfileView extends React.Component {
                 <Button
                   id="btn-delete-my-account"
                   variant="secondary"
-                  onClick={(e) => handleDeleteUser(e)}
+                  onClick={(e) => this.handleDeleteUser(e)}
                 >
                   Delete Account
                 </Button>
@@ -256,6 +279,6 @@ ProfileView.propTypes = {
     ),
     Username: PropTypes.string.isRequired,
     Email: PropTypes.string.isRequired,
-    Birthdate: PropTypes.string,
+    Birthday: PropTypes.string,
   }),
 };

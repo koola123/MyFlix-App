@@ -11,7 +11,6 @@ function VisibilityFilterInput(props) {
       onChange={(e) => props.setFilter(e.target.value)}
       value={props.visibilityFilter}
       placeholder="Search for a movie..."
-      style={{ width: "71.233rem", marginTop:"50px"}}
     />
   );
 }

@@ -10,7 +10,9 @@ The client side for a movies app called "MyFlix" built with the MERN stack in wh
 
 <img src="src/assets/myflix.png" width="800px">
 
-# Technology used:
+<br>
+
+# Technology stack:
 
 - React 
 - JSX 
@@ -61,7 +63,7 @@ The client side for a movies app called "MyFlix" built with the MERN stack in wh
 * Displays favorite movies
 * Allows users to remove a movie from their list of favorites
 
-## 🛠 Installation: 
+# 🛠 Installation: 
  ```
  git clone https://github.com/koola123/myFlix.git
  cd myFlix

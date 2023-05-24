@@ -5,7 +5,6 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import moviesApp from "./reducers/reducers";
 import { devToolsEnhancer } from "redux-devtools-extension";
-import ThemeProvider from 'react-bootstrap/ThemeProvider'
 import MainView from "./components/main-view/main-view";
 
 // Import statement to indicate that we need to bundle `./index.scss`
@@ -17,16 +16,11 @@ const store = createStore(moviesApp, devToolsEnhancer());
 class MyFlixApplication extends React.Component {
   render() {
     return (
-      <ThemeProvider
-      breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
-      minBreakpoint="xxs"
-    >
       <Provider store={store}>
         <Container>
           <MainView />
         </Container>
       </Provider>
-      </ThemeProvider>
     );
   }
 }
