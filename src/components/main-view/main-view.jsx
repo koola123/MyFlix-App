@@ -84,17 +84,16 @@ class MainView extends React.Component {
     let { movies, user } = this.props;
     return (
       <Router>
-        <Navbar id="main-nav" fixed="top" variant="dark" expand="lg">
-          <Navbar.Brand>MyFlix!</Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll">
-            <Nav
-              className="me-auto my-5 my-lg-0"
-              style={{ maxHeight: "100px" }}
-              navbarScroll
-            >
-              {!user && <React.Fragment></React.Fragment>}
-              {user && (
+        {user && (
+          <Navbar id="main-nav" fixed="top" variant="dark" expand="lg">
+            <Navbar.Brand>MyFlix!</Navbar.Brand>
+            <Navbar.Toggle aria-controls="navbarScroll" />
+            <Navbar.Collapse id="navbarScroll">
+              <Nav
+                className="me-auto my-5 my-lg-0"
+                style={{ maxHeight: "100px" }}
+                navbarScroll
+              >
                 <React.Fragment>
                   <Link to={"/"}>
                     <Button size="md" type="submit">
@@ -116,10 +115,10 @@ class MainView extends React.Component {
                     Logout
                   </Button>
                 </React.Fragment>
-              )}
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
+        )}
         <Row className="main-view justify-content-md-center">
           <Route
             exact
