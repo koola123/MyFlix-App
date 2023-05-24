@@ -10,9 +10,7 @@ The client side for a movies app called "MyFlix" built with the MERN stack in wh
 
 <img src="src/assets/myflix.png" width="800px">
 
-<br>
-
-## Technology used:
+# Technology used:
 
 - React 
 - JSX 
@@ -22,7 +20,7 @@ The client side for a movies app called "MyFlix" built with the MERN stack in wh
 - Class components
 - React Redux for state management
 
-## User Stories:
+# User Stories:
 
 - As a user, I want to be able to access information on movies, directors, and genres so that I can learn more about movies I've watched or am interested in.
 - As a user, I want to be able to create a profile so I can save data about my favorite movies.
