@@ -43,7 +43,7 @@ export class ProfileView extends React.Component {
         console.log(error);
       });
   }
-  // Remove a movie from the users profile
+  // Remove a movie from the user profile
   removeFavoriteMovie(e, movie) {
     const token = localStorage.getItem("token");
     const username = localStorage.getItem("user");
@@ -98,7 +98,7 @@ export class ProfileView extends React.Component {
         }
       )
       .then((response) => {
-        alert("Saved new changes");
+        alert("Profile has been updated");
         this.setState({
           Username: response.data.Username,
           Password: response.data.Password,
@@ -138,7 +138,7 @@ export class ProfileView extends React.Component {
       .then(() => {
         localStorage.removeItem("user");
         localStorage.removeItem("token");
-        alert("Your account has been deleted.");
+        alert("Your account has been deleted");
         window.open(`/`, "_self");
       })
       .catch((e) => {
@@ -197,10 +197,10 @@ export class ProfileView extends React.Component {
               onSubmit={(e) =>
                 this.handleUpdate(
                   e,
-                  this.Username,
-                  this.Password,
-                  this.Email,
-                  this.Birthday
+                  this.state.Username,
+                  this.state.Password,
+                  this.state.Email,
+                  this.state.Birthdate
                 )
               }
             >
@@ -209,6 +209,7 @@ export class ProfileView extends React.Component {
                   type="text"
                   size="md"
                   placeholder="Username"
+                  value={this.state.Username}
                   required
                   onChange={(e) => this.setUsername(e.target.value)}
                 />
@@ -219,6 +220,7 @@ export class ProfileView extends React.Component {
                   type="password"
                   size="md"
                   placeholder="Password"
+                  value={this.state.Password}
                   required
                   onChange={(e) => this.setPassword(e.target.value)}
                 />
@@ -229,12 +231,13 @@ export class ProfileView extends React.Component {
                   type="email"
                   size="md"
                   placeholder="Email"
+                  value={this.state.Email}
                   required
                   onChange={(e) => this.setEmail(e.target.value)}
                 />
               </Form.Group>
 
-              <Form.Group controlId="Birthday">
+              <Form.Group controlId="Birthdate">
                 <Form.Control
                   type="date"
                   size="md"
