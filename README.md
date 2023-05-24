@@ -8,13 +8,10 @@ The client side for a movies app called "MyFlix" built with the MERN stack in wh
 
 <br>
 
-## Placeholder for Images
-<p align-right>
-<img src="http://via.placeholder.com/150x150" alt="movie app image">
-<img src="http://via.placeholder.com/150x150" alt="movie app image">
-<img src="http://via.placeholder.com/150x150" alt="movie app image">
-   </p>
- 
+<img src="src/assets/myflix.png" width="800px">
+
+<br>
+
 ## Technology used:
 
 - React 
