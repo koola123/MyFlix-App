@@ -25,54 +25,49 @@ export class MovieView extends React.Component {
         console.log(error);
       });
   }
-  
 
   render() {
     const { movie, onBackClick } = this.props;
 
     return (
       <div className="movie-view">
-        <span className="movie-title">{movie.Title}!</span>
+        <span className="movie-title">{movie.Title}</span>
         <div className="d-flex movie-poster">
           <img src={movie.ImagePath} style={{ width: "350px" }} />
+          <div className="movie-text">
           <div className="movie-director">
-          <span>Director: </span>
-          <span>{movie.Director.Name}</span>
-          <div className="movie-genre">
-            <span>Film category / Genre: </span>
-            <span>{movie.Genre.Name}</span>
+            <span>Director: </span>
+            <span>{movie.Director.Name}</span>
+            <div className="movie-genre">
+              <span>Film category / Genre: </span>
+              <span>{movie.Genre.Name}</span>
+            </div>
+            <div className="movie-description">
+              <span>{movie.Description}</span>
+            </div>
+            </div>
           </div>
-          <div className="movie-description">
-            <span>{movie.Description}</span>
-          </div>
-        </div>
         </div>
         <div className="mt-4">
-        <Link to={`/directors/${movie.Director.Name}`}>
+          <Link to={`/directors/${movie.Director.Name}`}>
+            <Button className="movie-view-button">Director</Button>
+          </Link>
+          <Link to={`/genres/${movie.Genre.Name}`}>
+            <Button className="movie-view-button">Genre</Button>
+          </Link>
           <Button
-          className="movie-view-button">
-            Director
+            className="movie-view-button"
+            value={movie._id}
+            onClick={(e) => this.addFavorite(e, movie)}
+          >
+            Favorites
           </Button>
-        </Link>
-        <Link to={`/genres/${movie.Genre.Name}`}>
           <Button
-          className="movie-view-button">
-            Genre
+            className="movie-view-button"
+            onClick={() => onBackClick(null)}
+          >
+            Back to Movies
           </Button>
-        </Link>
-        <Button
-          className="movie-view-button"
-          value={movie._id}
-          onClick={(e) => this.addFavorite(e, movie)}
-        >
-          Favorites
-        </Button>
-        <Button
-          className="movie-view-button"
-          onClick={() => onBackClick(null)}
-        >
-          Back to Movies
-        </Button>
         </div>
       </div>
     );

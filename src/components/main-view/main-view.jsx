@@ -17,8 +17,9 @@ import { ProfileView } from "../profile-view/profile-view";
 import MoviesList from "../movies-list/movies-list";
 // Import react bootstrap components
 import { Row, Col } from "react-bootstrap";
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+
 import { Link } from "react-router-dom";
 
 // Import  main view styles
@@ -104,13 +105,15 @@ class MainView extends React.Component {
                 style={{ maxHeight: "100px" }}
                 navbarScroll
               >
-                  <Link to={"/"}>
-                      Home
-                  </Link>
-                  <Link to={"/profile"}>
-                      Profile
-                  </Link>
+                <Nav.Link>
+                  <Link className="link-color" to={"/"}>Home</Link>
+                </Nav.Link>
+                <Nav.Link>
+                  <Link className="link-color" to={"/profile"}>Profile</Link>
+                </Nav.Link>
+                <Nav.Link>
                   <Link
+                  className="link-color"
                     variant="dark"
                     size="md"
                     onClick={() => {
@@ -119,6 +122,7 @@ class MainView extends React.Component {
                   >
                     Logout
                   </Link>
+                </Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Navbar>

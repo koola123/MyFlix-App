@@ -2,6 +2,16 @@
   background: #3f51b5;
 }
 
+.link-color {
+  color: #fff !important;
+  text-decoration: none !important;
+  transition: 0.2s ease !important;
+}
+
+.link-color:hover {
+  color: lightgrey !important;
+}
+
 .main-view::before {
   content: "";
   display: inline-block;
