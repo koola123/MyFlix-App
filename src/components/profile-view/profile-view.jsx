@@ -35,10 +35,9 @@ export class ProfileView extends React.Component {
       .then((response) => {
         console.log(response);
         this.setState({
-          Username: response.data.Username,
-          Password: response.data.Password,
+          Username: response.data.Username, 
           Email: response.data.Email,
-          Birthday: response.data.Birthday,
+          Birthday: response.data.Birthday.substring(0,10),
           FavoriteMovies: response.data.FavoriteMovies,
         });
       })
@@ -59,7 +58,7 @@ export class ProfileView extends React.Component {
         }
       )
       .then(() => {
-        alert("The movie has been removed from the favorites list");
+        alert("Movie has been removed");
         this.componentDidMount();
       })
       .catch((error) => {
@@ -86,15 +85,14 @@ export class ProfileView extends React.Component {
     const token = localStorage.getItem("token");
     const username = localStorage.getItem("user");
 
-    // Update information user profile
+    // Update user profile information
     axios
       .put(
         `https://my-blockbusters.herokuapp.com/users/${username}`,
         {
           Username: this.state.Username,
-          Password: this.state.Password,
           Email: this.state.Email,
-          Birthday: this.state.Birthday,
+          Birthday: this.state.Birthday.substring(0,10)
         },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -102,14 +100,7 @@ export class ProfileView extends React.Component {
       )
       .then((response) => {
         alert("Profile has been updated");
-        this.setState({
-          Username: response.data.Username,
-          Password: response.data.Password,
-          Email: response.data.Email,
-          Birthday: response.data.Birthday,
-        });
         localStorage.setItem("user", this.state.Username);
-        window.open(`/users/${username}`, "_self");
       })
       .catch((error) => {
         console.log(error);
@@ -145,7 +136,7 @@ export class ProfileView extends React.Component {
 
   setPassword(value) {
     this.setState({
-      Passwort: value,
+      Password: value,
     })
   }
 
@@ -216,6 +207,7 @@ export class ProfileView extends React.Component {
                 <Form.Control
                   type="date"
                   size="md"
+                  value={this.state.Birthday}
                   onChange={(e) => this.setBirthday(e.target.value)}
                 />
               </Form.Group>
