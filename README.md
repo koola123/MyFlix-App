@@ -74,8 +74,6 @@ The client side for a movies app called "MyFlix" built with the MERN stack in wh
   or
   `parcel index.html`
  
- Awesome! 🚀
- 
  <br>
  
 Version 1.0.0
