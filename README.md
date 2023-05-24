@@ -32,34 +32,34 @@ The client side for a movies app called "MyFlix" built with the MERN stack in wh
 
 # Features and Requirements:
 
-## 👨🏻‍💻 Main View:
+## Main View:
 
 * Returns al list of ALL movies to the user (each listed item with an image, title, and description)
 * Sorting and filtering
 * Ability to select a movie for more details
 
-## 👨🏻‍💻 Single Movie View:
+## Single Movie View:
 
 * Returns data (description, genre, director, image) about a single movie to the user
 * Allows users to add a movie to their list of favorites
 
-## 👨🏻‍💻 Login View:
+## Login View:
 
 * Allows users to log in with a username and password
 * Registration view
 * Allows new users to register (username, password, email, birthday)
 
-## 👨🏻‍💻 Genre View:
+## Genre View:
 
 * Returns data about a genre, with a name and description
 * Displays example movies
 
-## 👨🏻‍💻 Director View:
+## Director View:
 
 * Returns data about a director (name, bio, birt hyear, death year - if appropriate)
 * Displays example movies
 
-## 👨🏻‍💻 Profile View:
+## Profile View:
 
 * Allows users to update their user info (username.password.email.date of birth)
 * Allows existing users to deregister
