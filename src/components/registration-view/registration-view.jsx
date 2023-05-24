@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 import axios from "axios";
 
@@ -28,7 +29,8 @@ export function RegistrationView(props) {
         window.open("/", "_self"); // the second argument '_self' is necessary so that the page will open in the current tab
       })
       .catch((e) => {
-        console.log("error registering the user");
+        alert("Registration failed")
+        console.log(e,"User registration failed");
       });
   };
 
@@ -69,14 +71,13 @@ export function RegistrationView(props) {
           onChange={(e) => setBirthday(e.target.value)}
         />
       </Form.Group>
-      <Button
-        id="reg-btn-color"
-        variant="secondary"
-        type="submit"
-        onClick={handleSubmit}
-      >
+      <Button id="reg-btn-color" type="submit" onClick={handleSubmit}>
         Signup
       </Button>
+      <span className="reg-text">Already have an account?</span>
+      <Link to={"/"}>
+        <span className="reg-signup">Login</span>
+      </Link>
     </Form>
   );
 }

@@ -1,41 +1,26 @@
-.first-header {
-  color: 000;
-  font-size: 60px;
-  font-family: Roboto;
-  padding: 20px;
-  text-align: center;
-}
-
 .profile-card {
   margin-top: 70px;
+  margin-bottom: 30px;
+  padding: 100px;
 }
 
 #btn-update-my-account {
   color: #fff;
   font-size: 16px;
   margin-right: 10px;
-  font-weight: 600;
-  margin-left: -20px;
-  background: #3f51b5;
 }
 
 #btn-delete-my-account {
   color: #fff;
   font-size: 16px;
-  font-weight: 600;
-  background: #3f51b5;
 }
 
-.favorite-movies-header {
-  color: #fff;
-  display: grid;
-  place-items: center;
-  align-items: center;
-  background: #3f51b5;
-  border-radius: 7px;
-  height: 100%;
-  font-size: 35px;
+.favorite-movies-title {
+  color: #3244a8;
+  margin-top: 80px;
   text-align: center;
-  margin-bottom: 50px;
-  margin-top: 20px;
+}
+
+.profile-title {
+  color: #3244a8;
 }

@@ -16,13 +16,27 @@ h1 {
   text-align: center;
 }
 
+.reg-text {
+  font-size: 13px;
+  margin-top: 25px;
+  margin-right: 12px;
+}
+
+.reg-signup {
+  font-size: 13px;
+  color: lime;
+}
+
+.reg-signup:hover {
+  cursor: pointer;
+}
+
 #reg-btn-color {
   background: #3244a8;
   font-size: 15px;
   margin-right: 10px;
   border: none;
   width: 100%;
-  height: 40px;
   text-transform: uppercase;
   box-shadow: none;
 }
