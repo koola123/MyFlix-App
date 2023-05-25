@@ -91,6 +91,7 @@ export class ProfileView extends React.Component {
         `https://my-blockbusters.herokuapp.com/users/${username}`,
         {
           Username: this.state.Username,
+          Password: this.state.Password,
           Email: this.state.Email,
           Birthday: this.state.Birthday.substring(0,10)
         },
