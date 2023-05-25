@@ -12,7 +12,7 @@ The client side for a movies app called "MyFlix" built with the MERN stack in wh
 
 <br>
 
-# Technology stack:
+# 🎯 Technology stack:
 
 - React 
 - JSX 
