@@ -105,23 +105,20 @@ class MainView extends React.Component {
                 style={{ maxHeight: "100px" }}
                 navbarScroll
               >
-                <Nav.Link>
-                  <Link className="link-color" to={"/"}>Home</Link>
-                </Nav.Link>
-                <Nav.Link>
-                  <Link className="link-color" to={"/profile"}>Profile</Link>
-                </Nav.Link>
-                <Nav.Link>
-                  <Link
-                  className="link-color"
-                    variant="dark"
-                    size="md"
-                    onClick={() => {
-                      this.onLoggedOut();
-                    }}
-                  >
-                    Logout
-                  </Link>
+                <Link className="link-color nav-link" to={"/"}>
+                  Home
+                </Link>
+                <Link className="link-color nav-link" to={"/profile"}>
+                  Profile
+                </Link>
+                <Nav.Link
+                className="link-color"
+                variant="dark"
+                size="md"
+                onClick={() => {
+                  this.onLoggedOut();
+                }}>
+                  Logout
                 </Nav.Link>
               </Nav>
             </Navbar.Collapse>
