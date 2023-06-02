@@ -1,11 +1,7 @@
-// Import react
 import React from "react";
-// Import axios as a dependency
 import axios from "axios";
-// Import react router modules
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-// Import components into main view
 import { setMovies } from "../../actions/actions";
 import { setUser } from "../../actions/actions";
 import { LoginView } from "../login-view/login-view";
@@ -15,14 +11,12 @@ import { DirectorView } from "../director-view/director-view";
 import { GenreView } from "../genre-view/genre-view";
 import { ProfileView } from "../profile-view/profile-view";
 import MoviesList from "../movies-list/movies-list";
-// Import react bootstrap components
 import { Row, Col } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-
 import { Link } from "react-router-dom";
+import FaUserCircle from "../user-icon/user-icon";
 
-// Import  main view styles
 import "./main-view.scss";
 
 class MainView extends React.Component {
@@ -43,7 +37,7 @@ class MainView extends React.Component {
       });
   }
 
-  // Get all movies with token based authorization
+  // Get all movies
   getMovies(token) {
     axios
       .get("https://my-blockbusters.herokuapp.com/movies", {
@@ -96,20 +90,19 @@ class MainView extends React.Component {
       <Router>
         {/* Show Navbar when user is logged in, otherwise don't */}
         {user && (
-          <Navbar id="main-nav" fixed="top" variant="dark" expand="lg">
-            <Navbar.Brand>MyFlix!</Navbar.Brand>
+          <Navbar id="main-nav" className="mr-auto" fixed="top" variant="dark" expand="lg">
+            <Navbar.Brand style={{fontSize:"30px", fontWeight:"bold"}}>MyFlix!</Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
               <Nav
-                className="me-auto my-5 my-lg-0"
-                style={{ maxHeight: "100px" }}
+                className="me-auto"
                 navbarScroll
               >
                 <Link className="link-color nav-link" to={"/"}>
                   Home
                 </Link>
                 <Link className="link-color nav-link" to={"/profile"}>
-                  Profile
+                Profile<FaUserCircle size={20}/>
                 </Link>
                 <Nav.Link
                 className="link-color"
@@ -124,7 +117,9 @@ class MainView extends React.Component {
             </Navbar.Collapse>
           </Navbar>
         )}
+
         <Row className="main-view justify-content-md-center">
+         
           <Route
             exact
             path="/"
@@ -135,10 +130,12 @@ class MainView extends React.Component {
                     <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
                   </Col>
                 );
-              if (movies.length === 0) return <div className="main-view" />;
+              if (movies.length === 0) 
+              return (
+              <div className="main-view" />)
               return <MoviesList movies={movies} />;
             }}
-          />
+            />
 
           <Route
             path="/register"

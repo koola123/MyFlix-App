@@ -23,8 +23,8 @@ function MoviesList(props) {
   if (!movies) return <div className="main-view" />;
 
   return (
-    <>
-      <Col md={12} style={{ margin: "16px" }}>
+    <> {/* Searchbar position */}
+      <Col md={12} style={{ marginTop: "80px" }}>
         <VisibilityFilterInput visibilityFilter={visibilityFilter} />
       </Col>
       {filteredMovies.map((m) => (

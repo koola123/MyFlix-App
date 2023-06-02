@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 import { Button, Card, Form, Row } from "react-bootstrap";
+import FaUserCircle from "../user-icon/user-icon";
 
 import "./profile-view.scss";
 
@@ -57,9 +58,11 @@ export class ProfileView extends React.Component {
           headers: { Authorization: `Bearer ${token}` },
         }
       )
-      .then(() => {
+      .then((response) => {
+         this.setState({
+            FavoriteMovies: response.data.FavoriteMovies,
+          });
         alert("Movie has been removed");
-        this.componentDidMount();
       })
       .catch((error) => {
         console.log(error);
@@ -160,6 +163,7 @@ export class ProfileView extends React.Component {
       <Row className="profile-view justify-content-md-center">
         {/* Profile View */}
         <Card className="profile-card">
+          <h1><FaUserCircle/></h1>
           <h1 className="profile-title">Profile View</h1>
           <Form
             noValidate
@@ -236,25 +240,22 @@ export class ProfileView extends React.Component {
                   if (movie) {
                     return (
                       <Card style={{ width: "18rem" }} key={movieId}>
-                        <Card.Img variant="top" />
+                        <Card.Img src={movie.ImagePath} variant="top" />
                         <Card.Body>
                           <Card.Title className="movie-card-title">
                             {movie.Title}
                           </Card.Title>
                         </Card.Body>
                         <Button
-                          variant="secondary"
-                          size="sm"
+                          variant="info"
+                          size="lg"
                           value={movie._id}
                           onClick={(e) => this.removeFavoriteMovie(e, movie)}
                         >
                           Remove
                         </Button>
                       </Card>
-                    );
-                  } else {
-                    return "The list is empty."
-                  }
+                    )}
                 })}
             </Card>
           </React.Fragment>
