@@ -1,6 +1,7 @@
 // src/components/movies-list/movies-list
 import React from "react";
 import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import { connect } from "react-redux";
 import VisibilityFilterInput from "../visibility-filter-input/visibility-filter-input";
 import { MovieCard } from "../movie-card/movie-card";
@@ -23,15 +24,18 @@ function MoviesList(props) {
   if (!movies) return <div className="main-view" />;
 
   return (
-    <> {/* Searchbar position */}
+    <> 
+     <Row>
+    {/* Searchbar position */}
       <Col md={12} style={{ marginTop: "80px" }}>
         <VisibilityFilterInput visibilityFilter={visibilityFilter} />
       </Col>
       {filteredMovies.map((m) => (
-        <Col md={3} key={m._id}>
+        <Col sm={6} md={3} lg={4} xl={3} xxl={3} key={m._id} className="mb-5">
           <MovieCard movie={m} />
         </Col>
-      ))}
+      ))};
+      </Row>
     </>
   );
 }

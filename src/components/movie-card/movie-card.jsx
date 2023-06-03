@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 
@@ -12,10 +11,9 @@ export class MovieCard extends React.Component {
     const { movie } = this.props;
 
     return (
-      <Col>
-        <Card style={{ width: "16rem", height:"34rem" }} className="mb-5">
+        <Card style={{ height: "100%" }}> 
           <Card.Img variant="top" src={movie.ImagePath} />
-          <Card.Body>
+          <Card.Body className="movie-card-body">
             <Card.Title>{movie.Title}</Card.Title>
             <Link to={`/movies/${movie._id}`}>
               <Button
@@ -28,7 +26,6 @@ export class MovieCard extends React.Component {
             </Link>
           </Card.Body>
         </Card>
-      </Col>
     );
   }
 }
